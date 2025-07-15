@@ -1,0 +1,253 @@
+.p-matter{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+
+
+    &__left,
+    &__right{
+        padding: 2vw;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+    }
+
+    &__left{
+
+        > p{
+            @extend .u-fz--sm;
+        }
+    }
+
+    &__right{
+
+        form{
+            @extend .u-fz--sm;
+
+            .select-wrap{
+                display: flex;
+                align-items: flex-end;
+                gap: 1vw;
+                padding-bottom: .5vw;
+
+                > p{
+                    @extend .u-fz--xs;
+                }
+
+                select{
+                    padding: .2vw 1vw;
+                    background-color: rgb(240, 240, 240);
+                    border-radius: .3vw;
+                }
+            }
+            
+            .input-wrap{
+                display: flex;
+                gap: .2vw;
+                padding: .5vw 1vw;
+                border: solid 1px rgb(177, 177, 177);
+                border-radius: 100vw;
+
+                img{
+                    opacity: .5;
+                    width: 1.1vw;
+                }
+            }
+        }
+    }
+
+    &__center{
+        border-right: solid 1px rgb(228, 228, 228);
+        border-left: solid 1px rgb(228, 228, 228);
+
+        &__record-list{
+
+            &__item{
+                padding: 1vw;
+                border-bottom: solid 1px rgb(228, 228, 228);
+                display: flex;
+                gap: 1vw;
+
+                > span{
+                    width: 4vw;
+                    height: fit-content;
+                    aspect-ratio: 1/1;
+                    border-radius: 50%;
+                    background-color: rgb(235, 235, 235);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img{
+                        width: 30%;
+                    }
+                }
+                
+                &__main{
+                    width: 100%;
+
+                    &__heading{
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 1vw;
+                        
+                        &__left{
+                            flex-shrink: 0;
+
+                            &__name{
+
+                                > p{
+                            
+                                    &:nth-of-type(1){
+                                        @extend .u-fz--3xs;
+                                    }
+    
+                                    &:nth-of-type(2){
+                                        @extend .u-fz--base;
+                                        font-weight: 600;
+                                        line-height: 1;
+                                    }
+                                }
+                            }
+
+                            &__number{
+                                padding-top: .5vw;
+
+                                > p{
+                                    @extend .u-fz--xs;
+                                }
+                            }
+                        }
+
+                        &__right{
+
+                            &__status{
+                                display: flex;
+                                gap: 1vw;
+    
+                                &__item{
+                                    display: flex;
+                                    @extend .u-fz--xs;
+                                    display: flex;
+                                    flex-direction: column;
+    
+                                    > span{
+                                        opacity: .5;
+                                        @extend .u-fz--2xs
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &__contents{
+                        padding-top: 1vw;
+                        display: grid;
+                        grid-template-columns: 5fr 2fr;
+                        gap: 2vw;
+
+                        &__left{
+                            border-right: solid 1px rgb(228, 228, 228);
+                            padding-right: 1vw;
+                            width: 100%;
+
+                            &__tab{
+
+                                &__btn{
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    gap: .5vw;
+
+                                    li{
+                                        @extend .u-fz--2xs;
+                                        font-weight: 500;
+                                        padding: .2vw 1vw;
+                                        border: solid 1px rgb(216, 216, 216);
+                                        border-radius: 100vw;
+                                        width: fit-content;
+                                        cursor: pointer;
+
+                                        &.is-active{
+                                            border-color: black;
+                                        }
+                                    }
+                                }
+
+                                &__panel{
+
+                                    table{
+                                        margin-top: 1vw;
+                                        table-layout: fixed;
+                                        width: 100%;
+                                        display: none;
+
+                                        &.is-active{
+                                            display: table;
+                                        }
+    
+                                        tr{
+                                    
+                                            td{
+                                                @extend .u-fz--xs;
+    
+                                                &:first-child{
+                                                    opacity: .5;
+                                                    width: 25%;
+                                                    padding: .5vw 0;
+                                                }
+
+                                                input,
+                                                textarea{
+                                                    background-color: rgb(248, 248, 248);
+                                                    padding: .5vw;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &__right{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+
+                            table{
+                                flex-shrink: 0;
+                                height: fit-content;
+                                table-layout: fixed;
+                                width: 100%;
+    
+                                tr{
+                                    
+                                    td{
+                                        @extend .u-fz--2xs;
+                                        word-break: break-word;
+    
+                                        &:first-child{
+                                            width: 40%;
+                                        }
+                                    }
+                                }
+                            }
+
+                            &__number{
+                                
+                                > p{
+                                    @extend .u-fz--2xs;
+                                    opacity: .6;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .loading{
+            width: 100%;
+            padding: 5vw;
+            text-align: center;
+        }
+    }
+}

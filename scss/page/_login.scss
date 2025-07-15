@@ -1,0 +1,97 @@
+.p-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+
+    &__panel{
+        padding: 4vw 3vw;
+        border-radius: 2vw;
+        border: solid 1px var(--border-color);
+        width: 30vw;
+        min-width: 400px;
+
+        &__heading{
+            display: flex;
+            flex-direction: column;
+            gap: .5vw;
+    
+            > p{
+                @extend .u-fz--xs;
+                font-weight: 600;
+            }
+    
+            h1{
+                @extend .u-ff--en;
+                @extend .u-fz--5xl;
+                font-weight: 500;
+                line-height: 1;
+            }
+        }
+    
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1vw;
+            padding-top: 2vw;
+
+            label{
+                display: flex;
+                flex-direction: column;
+                padding: .5vw .8vw;
+                border-radius: .5vw;
+                border: solid 1px var(--border-color);
+                width: 100%;
+
+                > span{
+                    @extend .u-fz--2xs;
+                    opacity: .6;
+                }
+
+                input{
+                    @extend .u-fz--base;
+                }
+
+                .password-wrap{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 1vw;
+
+                    input{
+                        width: fill-available;
+                    }
+                }
+            }
+
+            button{
+                padding: 1vw;
+                border: solid 1px black;
+                border-radius: .5vw;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: .3s ease;
+
+                @media (hover: hover) {
+                    &:hover {
+                        background-color: black;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .error{
+            color: red;
+            @extend .u-fz--xs;
+            padding-top: 1vw;
+        }
+    }
+    
+}
