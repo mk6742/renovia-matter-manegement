@@ -18,25 +18,3 @@
 
     <link rel="stylesheet" href="./css/style.css">
 </head>
-
-
-
-<!-- 時間統一 -->
-<?php
-function formatDateForInput($rawDate)
-{
-    if (empty($rawDate)) return '';
-
-    // 試すフォーマットを配列で用意
-    $formats = ['m/d/Y'];
-
-    foreach ($formats as $format) {
-        $dateObj = DateTime::createFromFormat($format, $rawDate);
-        if ($dateObj !== false) {
-            return $dateObj->format('Y-m-d');
-        }
-    }
-    // パース失敗なら空文字
-    return '';
-}
-?>

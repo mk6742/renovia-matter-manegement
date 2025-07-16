@@ -62,26 +62,9 @@
         &__record-list{
 
             &__item{
-                padding: 1vw;
+                padding: 1.5vw;
                 border-bottom: solid 1px rgb(228, 228, 228);
-                display: flex;
-                gap: 1vw;
 
-                > span{
-                    width: 4vw;
-                    height: fit-content;
-                    aspect-ratio: 1/1;
-                    border-radius: 50%;
-                    background-color: rgb(235, 235, 235);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                    img{
-                        width: 30%;
-                    }
-                }
-                
                 &__main{
                     width: 100%;
 
@@ -92,28 +75,47 @@
                         
                         &__left{
                             flex-shrink: 0;
+                            display: flex;
+                            gap: 1vw;
 
-                            &__name{
-
-                                > p{
-                            
-                                    &:nth-of-type(1){
-                                        @extend .u-fz--3xs;
-                                    }
-    
-                                    &:nth-of-type(2){
-                                        @extend .u-fz--base;
-                                        font-weight: 600;
-                                        line-height: 1;
-                                    }
+                            > span{
+                                width: 4vw;
+                                height: fit-content;
+                                aspect-ratio: 1/1;
+                                border-radius: 50%;
+                                background-color: rgb(235, 235, 235);
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+            
+                                img{
+                                    width: 30%;
                                 }
                             }
 
-                            &__number{
-                                padding-top: .5vw;
+                            &__texts{
+                                &__name{
 
-                                > p{
-                                    @extend .u-fz--xs;
+                                    > p{
+                                
+                                        &:nth-of-type(1){
+                                            @extend .u-fz--3xs;
+                                        }
+        
+                                        &:nth-of-type(2){
+                                            @extend .u-fz--base;
+                                            font-weight: 600;
+                                            line-height: 1;
+                                        }
+                                    }
+                                }
+    
+                                &__number{
+                                    padding-top: .5vw;
+    
+                                    > p{
+                                        @extend .u-fz--xs;
+                                    }
                                 }
                             }
                         }
@@ -140,9 +142,9 @@
                     }
 
                     &__contents{
-                        padding-top: 1vw;
+                        padding-top: 1.5vw;
                         display: grid;
-                        grid-template-columns: 5fr 2fr;
+                        grid-template-columns: 2fr 1fr;
                         gap: 2vw;
 
                         &__left{
@@ -212,24 +214,55 @@
                             flex-direction: column;
                             justify-content: space-between;
 
-                            table{
-                                flex-shrink: 0;
-                                height: fit-content;
-                                table-layout: fixed;
-                                width: 100%;
+                            &__info{
+                                
+                                table{
+                                    flex-shrink: 0;
+                                    height: fit-content;
+                                    table-layout: fixed;
+                                    width: 100%;
+
+                                    &:not(:first-child){
+                                        margin-top: 2vw;
+                                    }
+        
+                                    tr{
+                                        
+                                        td{
+                                            @extend .u-fz--2xs;
+                                            line-height: 1.3;
+                                            word-break: break-word;
+                                            padding-bottom: .2vw;
+        
+                                            &:first-child{
+                                                width: 40%;
+                                                padding-right: 1vw;
+                                            }
     
-                                tr{
-                                    
-                                    td{
-                                        @extend .u-fz--2xs;
-                                        word-break: break-word;
-    
-                                        &:first-child{
-                                            width: 40%;
+                                            input,
+                                            select,
+                                            textarea{
+                                                display: flex;
+                                                width: 100%;
+                                            }
+
+                                            .editable-checkbox{
+                                                display: flex;
+
+                                                label{
+                                                    display: flex;
+                                                    gap: .2vw;
+
+                                                    input{
+                                                        width: fit-content;
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
                             }
+
 
                             &__number{
                                 

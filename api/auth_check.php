@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('init.php');
+require_once(__DIR__ . '/init.php');
 
 $token = $_SESSION['user']['token'] ?? null;
 
@@ -14,7 +14,7 @@ if (!$token) {
             exit;
         } else {
             // 通常のHTMLページ（例：matter.phpなど）ならリダイレクト
-            header('Location: login.php');
+            header('Location: index.php');
             exit;
         }
     }

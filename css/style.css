@@ -9,19 +9,27 @@ body {
   line-height: 1.5;
 }
 
+:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px white inset;
+}
+
+textarea {
+  resize: vertical;
+}
+
 .u-ff--en, .p-login__panel__heading h1 {
   font-family: "Roboto", sans-serif;
 }
 
-.u-fz--3xs, .p-matter__center__record-list__item__main__heading__left__name > p:nth-of-type(1) {
+.u-fz--3xs, .p-matter__center__record-list__item__main__heading__left__texts__name > p:nth-of-type(1) {
   font-size: max(8px, 0.585vw);
 }
 
-.u-fz--2xs, .p-login__panel form label > span, .p-matter__center__record-list__item__main__contents__right__number > p, .p-matter__center__record-list__item__main__contents__right table tr td, .p-matter__center__record-list__item__main__contents__left__tab__btn li, .p-matter__center__record-list__item__main__heading__right__status__item > span {
+.u-fz--2xs, .p-login__panel form label > span, .p-matter__center__record-list__item__main__contents__right__number > p, .p-matter__center__record-list__item__main__contents__right__info table tr td, .p-matter__center__record-list__item__main__contents__left__tab__btn li, .p-matter__center__record-list__item__main__heading__right__status__item > span {
   font-size: max(10px, 0.732vw);
 }
 
-.u-fz--xs, .p-login__panel .error, .p-login__panel__heading > p, .p-matter__center__record-list__item__main__contents__left__tab__panel table tr td, .p-matter__center__record-list__item__main__heading__right__status__item, .p-matter__center__record-list__item__main__heading__left__number > p, .p-matter__right form .select-wrap > p {
+.u-fz--xs, .p-login__panel .error, .p-login__panel__heading > p, .p-matter__center__record-list__item__main__contents__left__tab__panel table tr td, .p-matter__center__record-list__item__main__heading__right__status__item, .p-matter__center__record-list__item__main__heading__left__texts__number > p, .p-matter__right form .select-wrap > p {
   font-size: max(12px, 0.878vw);
 }
 
@@ -29,7 +37,7 @@ body {
   font-size: max(14px, 1.025vw);
 }
 
-.u-fz--base, .p-login__panel form label input, .p-matter__center__record-list__item__main__heading__left__name > p:nth-of-type(2) {
+.u-fz--base, .p-login__panel form label input, .p-matter__center__record-list__item__main__heading__left__texts__name > p:nth-of-type(2) {
   font-size: max(16px, 1.17vw);
 }
 
@@ -90,24 +98,8 @@ body {
   border-left: solid 1px rgb(228, 228, 228);
 }
 .p-matter__center__record-list__item {
-  padding: 1vw;
+  padding: 1.5vw;
   border-bottom: solid 1px rgb(228, 228, 228);
-  display: flex;
-  gap: 1vw;
-}
-.p-matter__center__record-list__item > span {
-  width: 4vw;
-  height: -moz-fit-content;
-  height: fit-content;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  background-color: rgb(235, 235, 235);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.p-matter__center__record-list__item > span img {
-  width: 30%;
 }
 .p-matter__center__record-list__item__main {
   width: 100%;
@@ -119,12 +111,28 @@ body {
 }
 .p-matter__center__record-list__item__main__heading__left {
   flex-shrink: 0;
+  display: flex;
+  gap: 1vw;
 }
-.p-matter__center__record-list__item__main__heading__left__name > p:nth-of-type(2) {
+.p-matter__center__record-list__item__main__heading__left > span {
+  width: 4vw;
+  height: -moz-fit-content;
+  height: fit-content;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: rgb(235, 235, 235);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.p-matter__center__record-list__item__main__heading__left > span img {
+  width: 30%;
+}
+.p-matter__center__record-list__item__main__heading__left__texts__name > p:nth-of-type(2) {
   font-weight: 600;
   line-height: 1;
 }
-.p-matter__center__record-list__item__main__heading__left__number {
+.p-matter__center__record-list__item__main__heading__left__texts__number {
   padding-top: 0.5vw;
 }
 .p-matter__center__record-list__item__main__heading__right__status {
@@ -140,9 +148,9 @@ body {
   opacity: 0.5;
 }
 .p-matter__center__record-list__item__main__contents {
-  padding-top: 1vw;
+  padding-top: 1.5vw;
   display: grid;
-  grid-template-columns: 5fr 2fr;
+  grid-template-columns: 2fr 1fr;
   gap: 2vw;
 }
 .p-matter__center__record-list__item__main__contents__left {
@@ -191,18 +199,41 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
-.p-matter__center__record-list__item__main__contents__right table {
+.p-matter__center__record-list__item__main__contents__right__info table {
   flex-shrink: 0;
   height: -moz-fit-content;
   height: fit-content;
   table-layout: fixed;
   width: 100%;
 }
-.p-matter__center__record-list__item__main__contents__right table tr td {
-  word-break: break-word;
+.p-matter__center__record-list__item__main__contents__right__info table:not(:first-child) {
+  margin-top: 2vw;
 }
-.p-matter__center__record-list__item__main__contents__right table tr td:first-child {
+.p-matter__center__record-list__item__main__contents__right__info table tr td {
+  line-height: 1.3;
+  word-break: break-word;
+  padding-bottom: 0.2vw;
+}
+.p-matter__center__record-list__item__main__contents__right__info table tr td:first-child {
   width: 40%;
+  padding-right: 1vw;
+}
+.p-matter__center__record-list__item__main__contents__right__info table tr td input,
+.p-matter__center__record-list__item__main__contents__right__info table tr td select,
+.p-matter__center__record-list__item__main__contents__right__info table tr td textarea {
+  display: flex;
+  width: 100%;
+}
+.p-matter__center__record-list__item__main__contents__right__info table tr td .editable-checkbox {
+  display: flex;
+}
+.p-matter__center__record-list__item__main__contents__right__info table tr td .editable-checkbox label {
+  display: flex;
+  gap: 0.2vw;
+}
+.p-matter__center__record-list__item__main__contents__right__info table tr td .editable-checkbox label input {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .p-matter__center__record-list__item__main__contents__right__number > p {
   opacity: 0.6;

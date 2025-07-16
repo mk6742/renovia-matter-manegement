@@ -2,7 +2,7 @@
 class cURLClass
 {
 
-	// ----- FileMaker Login --------------c---------------------------- OK
+	// ----- FileMaker Login ------------------------------------------
 	function login($URL, $DB, $AUTH)
 	{
 
@@ -32,7 +32,7 @@ class cURLClass
 		return $TOKEN;
 	} // FileMaker Login Function -------------------------------------
 
-	// ----- FileMaker Logout ----------------------------------------- OK
+	// ----- FileMaker Logout ----------------------------------------- 
 	function logout($URL, $DB, $TOKEN)
 	{
 

@@ -4,3 +4,12 @@ body{
     letter-spacing: .03em;
     line-height: 1.5;
 }
+
+
+:-webkit-autofill{
+	box-shadow: 0 0 0px 1000px white inset;
+}
+
+textarea{
+    resize: vertical
+}

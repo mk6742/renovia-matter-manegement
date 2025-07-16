@@ -1,18 +1,23 @@
-<?php foreach ($records as $record): ?>
+<?php foreach ($records as $record):
+    require_once(__DIR__ . '/functions.php');
+?>
+
     <div class="p-matter__center__record-list__item" data-record-id="<?= $record['recordId'] ?>">
-        <span>
-            <img src="./img/man.svg" alt="">
-        </span>
         <div class="p-matter__center__record-list__item__main">
             <div class="p-matter__center__record-list__item__main__heading">
                 <div class="p-matter__center__record-list__item__main__heading__left">
-                    <div class="p-matter__center__record-list__item__main__heading__left__name">
-                        <p><?= htmlspecialchars($record['fieldData']['t_契約者名カナ'] ?? '') ?></p>
-                        <p><?= htmlspecialchars($record['fieldData']['t_契約者名'] ?? '') ?></p>
-                    </div>
+                    <span>
+                        <img src="./img/man.svg" alt="">
+                    </span>
+                    <div class="p-matter__center__record-list__item__main__heading__left__texts">
+                        <div class="p-matter__center__record-list__item__main__heading__left__texts__name">
+                            <p><?= htmlspecialchars($record['fieldData']['t_契約者名カナ'] ?? '') ?></p>
+                            <p><?= htmlspecialchars($record['fieldData']['t_契約者名'] ?? '') ?></p>
+                        </div>
 
-                    <div class="p-matter__center__record-list__item__main__heading__left__number">
-                        <p>管理番号：<?= htmlspecialchars($record['fieldData']['n_管理番号'] ?? '') ?></p>
+                        <div class="p-matter__center__record-list__item__main__heading__left__texts__number">
+                            <p>管理番号：<?= htmlspecialchars($record['fieldData']['n_管理番号'] ?? '') ?></p>
+                        </div>
                     </div>
                 </div>
 
@@ -35,6 +40,8 @@
             </div>
 
             <div class="p-matter__center__record-list__item__main__contents">
+
+                <!-- メインのパネル -->
                 <div class="p-matter__center__record-list__item__main__contents__left">
                     <div class="p-matter__center__record-list__item__main__contents__left__tab">
                         <ul class="p-matter__center__record-list__item__main__contents__left__tab__btn">
@@ -55,27 +62,7 @@
                                 <tr>
                                     <td>コール希望時間：</td>
                                     <td>
-                                        <?php
-                                        $rawTime = $record['fieldData']['ti_アポイント希望時間1'] ?? '';
-
-                                        $formattedTime = '';
-                                        if (!empty($rawTime)) {
-                                            $timeObj = DateTime::createFromFormat('H:i:s', $rawTime);
-                                            $formattedTime = $timeObj ? $timeObj->format('G:i') : htmlspecialchars($rawTime);
-                                        }
-
-                                        echo $formattedTime;
-                                        ?> ~
-                                        <?php
-                                        $rawTime = $record['fieldData']['ti_アポイント希望時間2'] ?? '';
-
-                                        $formattedTime = '';
-                                        if (!empty($rawTime)) {
-                                            $timeObj = DateTime::createFromFormat('H:i:s', $rawTime);
-                                            $formattedTime = $timeObj ? $timeObj->format('G:i') : htmlspecialchars($rawTime);
-                                        }
-                                        echo $formattedTime;
-                                        ?>
+                                        <input type="time" class="editable" name="ti_アポイント希望時間1" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_アポイント希望時間1'] ?? '')) ?>"> ~ <input type="time" class="editable" name="ti_アポイント希望時間2" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_アポイント希望時間2'] ?? '')) ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -243,50 +230,121 @@
                     </div>
                 </div>
 
+                <!-- 基本情報 -->
                 <div class="p-matter__center__record-list__item__main__contents__right">
-                    <table>
-                        <tr>
-                            <td>受付日：</td>
-                            <td><?= htmlspecialchars($record['fieldData']['d_受付日'] ?? '') ?></td>
+                    <div class="p-matter__center__record-list__item__main__contents__right__info">
 
-                        </tr>
-                        <tr>
-                            <td>受付時間：</td>
-                            <td><?= htmlspecialchars($record['fieldData']['ti_受付時間'] ?? '') ?></td>
-                        </tr>
-                        <tr>
-                            <td>担当：</td>
-                            <td><?= htmlspecialchars($record['fieldData']['t_アポ担当者'] ?? '') ?></td>
-                        </tr>
-                        <tr>
-                            <td>支店：</td>
-                            <td><?= htmlspecialchars($record['fieldData']['t_支店判別'] ?? '') ?></td>
-                        </tr>
-                        <tr>
-                            <td>確認者：</td>
-                            <td><?= htmlspecialchars($record['fieldData']['t_確認者'] ?? '') ?></td>
-                        </tr>
-                        <tr>
-                            <td>固定電話：</td>
-                            <td><?= htmlspecialchars($record['fieldData']['cn_固定電話番号'] ?? '') ?></td>
-                        </tr>
-                        <tr>
-                            <td>携帯電話：</td>
-                            <td><?= htmlspecialchars($record['fieldData']['cn_携帯電話番号'] ?? '') ?></td>
-                        </tr>
-                        <tr>
-                            <td>メールアドレス：</td>
-                            <td><?= htmlspecialchars($record['fieldData']['t_Email'] ?? '') ?></td>
-                        </tr>
-                        <tr>
-                            <td>郵便番号：</td>
-                            <td>〒<?= htmlspecialchars($record['fieldData']['t_郵便番号'] ?? '') ?></td>
-                        </tr>
-                        <tr>
-                            <td>住所：</td>
-                            <td><?= htmlspecialchars($record['fieldData']['t_施工先住所'] ?? '') ?></td>
-                        </tr>
-                    </table>
+                        <!-- 情報1　受付日等 -->
+                        <table>
+                            <tr>
+                                <td>受付日：</td>
+                                <td>
+                                    <input type="date" class="editable" name="d_受付日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_受付日'] ?? '')) ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>受付時間：</td>
+                                <td>
+                                    <input type="time" class="editable" name="ti_受付時間" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_受付時間'] ?? '')) ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>アポ担当者：</td>
+                                <td>
+                                    <select class="editable" name="t_アポ担当者" data-valuelist="担当者一覧">
+                                        <option value="<?= htmlspecialchars($record['fieldData']['t_アポ担当者']) ?>"></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>支店：</td>
+                                <td>
+                                    <input type="text" class="editable" name="t_支店判別" value="<?= htmlspecialchars($record['fieldData']['t_支店判別'] ?? '') ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Web区分：</td>
+                                <td>
+                                    <select class="editable" name="t_web区分" data-valuelist="web区分">
+                                        <option value="<?= htmlspecialchars($record['fieldData']['t_web区分']) ?>"></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>確認者：</td>
+                                <td>
+                                    <input type="text" class="editable" name="t_確認者" value="<?= htmlspecialchars($record['fieldData']['t_確認者'] ?? '') ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>固定電話：</td>
+                                <td>
+                                    <input type="text" class="editable" name="cn_固定電話番号" value="<?= htmlspecialchars($record['fieldData']['cn_固定電話番号'] ?? '') ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>携帯電話：</td>
+                                <td>
+                                    <input type="text" class="editable" name="cn_携帯電話番号" value="<?= htmlspecialchars($record['fieldData']['cn_携帯電話番号'] ?? '') ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>メールアドレス：</td>
+                                <td>
+                                    <textarea class="editable" name="t_Email"><?= htmlspecialchars($record['fieldData']['t_Email'] ?? '') ?></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>〒：</td>
+                                <td>
+                                    <input type="text" class="editable" name="t_郵便番号" value="<?= htmlspecialchars($record['fieldData']['t_郵便番号'] ?? '') ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>住所：</td>
+                                <td>
+                                    <textarea class="editable" name="t_施工先住所"><?= htmlspecialchars($record['fieldData']['t_施工先住所'] ?? '') ?></textarea>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 情報2　外注先等 -->
+                        <table>
+                            <tr>
+                                <td>外注先：</td>
+                                <td>
+                                    <select class="editable" name="t_外注先" data-valuelist="外注先">
+                                        <option value="<?= htmlspecialchars($record['fieldData']['t_外注先']) ?>"></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>屋号代表者：</td>
+                                <td>
+                                    <input type="text" class="editable" name="t_屋号代表者" value="<?= htmlspecialchars($record['fieldData']['t_屋号代表者'] ?? '') ?>">
+                                    <!-- 取得できない。多分値一覧で他のテーブルが参照されているため -->
+                                    <!-- <select class="editable" name="t_屋号代表者" data-valuelist="クローザー氏名">
+                                        <option value="<?= htmlspecialchars($record['fieldData']['t_屋号代表者']) ?>"></option>
+                                    </select> -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>電話連絡予定日：</td>
+                                <td>
+                                    <input type="date" class="editable" name="d_電話連絡予定日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_電話連絡予定日'] ?? '')) ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>電話連絡時間：</td>
+                                <td style="display: flex; width:fit-content; ">
+                                    <input type="time" class="editable" name="ti_電話連絡時間1" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_電話連絡時間1'] ?? '')) ?>"> ~ <input type="time" class="editable" name="ti_電話連絡時間2" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_電話連絡時間2'] ?? '')) ?>">
+                                </td>
+                            </tr>
+
+
+                        </table>
+                    </div>
+
 
                     <div class="p-matter__center__record-list__item__main__contents__right__number">
                         <p>顧客管理番号：<?= htmlspecialchars($record['fieldData']['n_顧客管理番号'] ?? '') ?></p>

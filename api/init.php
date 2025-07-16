@@ -2,7 +2,7 @@
 error_reporting(0);
 
 // ----- FileMaker Data API -----
-require_once("cURL.php");
+require_once(__DIR__ . "/../cURL.php");
 $curlclass = new cURLClass();
 
 $URL    = 'https://app.nexus-fms.com';

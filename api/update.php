@@ -1,6 +1,6 @@
 <?php
 
-require_once('auth-check.php');
+require_once(__DIR__ . '/auth_check.php');
 header('Content-Type: application/json');
 
 $recordId = $_POST['recordId'] ?? '';
