@@ -23,65 +23,121 @@ bindTabEvents();
 
 
 // 編集可能 ------------------------------------------------------------------------
-document.querySelectorAll('.editable').forEach(input => {
-    // 初期値を data 属性に保持
-    input.dataset.originalValue = input.value;
-
-    input.addEventListener('blur', function () {
-        const recordDiv = input.closest('.p-matter__center__record-list__item');
-        const recordId = recordDiv.dataset.recordId;
-        const fieldName = input.name;
-        let fieldValue = input.value;
-
-        // 値が変わっていない場合は送信しない
-        if (fieldValue === input.dataset.originalValue) {
-            return;
-        }
-
-        // 日付フィールド：YYYY-MM-DD → MM/DD/YYYY
-        if (input.type === 'date' && fieldValue) {
-            const parts = fieldValue.split('-');
-            fieldValue = `${parts[1]}/${parts[2]}/${parts[0]}`;
-        }
-
-        // 時刻フィールド：HH:MM → HH:MM:00
-        if (input.type === 'time' && fieldValue) {
-            if (!fieldValue.match(/^\d{2}:\d{2}:\d{2}$/)) {
-                fieldValue = `${fieldValue}:00`;
-            }
-        }
-
+{
+    function removeErrorMessage(target) {
+        const next = target.querySelector?.('.error-message') || target.nextElementSibling;
+        if (next?.classList.contains('error-message')) next.remove();
+    }
+    
+    function showErrorMessage(target, message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.textContent = message;
+        target.appendChild ? target.appendChild(errorDiv) : target.parentNode.insertBefore(errorDiv, target.nextSibling);
+    }
+    
+    function updateField({ recordId, fieldName, fieldValue, target }) {
         fetch('api/update.php', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: new URLSearchParams({
-                recordId,
-                fieldName,
-                fieldValue
-            })
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ recordId, fieldName, fieldValue })
         })
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
             console.log("Update Response:", data);
+    
             if (data.status === 'success') {
-                input.style.backgroundColor = '#e6ffe6';
-                input.dataset.originalValue = input.value; // 更新後の値を保存
+                target.style.backgroundColor = '#e6ffe6';
+                target.dataset.originalValue = target.value;
             } else {
-                input.style.backgroundColor = '#ffe6e6';
+                target.style.backgroundColor = '#ffe6e6';
+                const error301 = data.response?.messages?.find(msg => msg.code === '301');
+                if (error301) {
+                    showErrorMessage(target, 'このレコードは他のユーザーによって編集中です。保存できませんでした。');
+                }
                 console.log("保存失敗の詳細:", data.message);
             }
         })
-        .catch(error => {
-            input.style.backgroundColor = '#ffe6e6';
-            console.error("通信エラー:", error);
+        .catch(err => {
+            target.style.backgroundColor = '#ffe6e6';
+            console.error("通信エラー:", err);
+        });
+    }
+    
+    document.querySelectorAll('.editable').forEach(input => {
+        input.dataset.originalValue = input.value;
+    
+        input.addEventListener('blur', function () {
+            const recordDiv = input.closest('.p-matter__center__record-list__item');
+            const recordId = recordDiv?.dataset?.recordId;
+            const fieldName = input.name;
+            let fieldValue = input.value;
+    
+            removeErrorMessage(input);
+    
+            if (fieldValue === input.dataset.originalValue) {
+                // 変更がなかった場合、背景色を元に戻す
+                input.style.backgroundColor = 'rgb(246, 246, 246)';
+                return;
+            }
+    
+            // フォーマット補正
+            if (input.type === 'date' && fieldValue) {
+                const [y, m, d] = fieldValue.split('-');
+                fieldValue = `${m}/${d}/${y}`;
+            } else if (input.type === 'time' && fieldValue && !fieldValue.includes(':00')) {
+                fieldValue += ':00';
+            }
+    
+            updateField({ recordId, fieldName, fieldValue, target: input });
+        });
+    });
+    
+    document.addEventListener('change', function (e) {
+        if (!e.target.matches('.editable-checkbox input[type="checkbox"]')) return;
+    
+        const wrapper = e.target.closest('.editable-checkbox');
+        const recordDiv = wrapper.closest('.p-matter__center__record-list__item');
+        const recordId = recordDiv?.dataset?.recordId;
+        const fieldName = wrapper.dataset.name;
+        const fieldValue = Array.from(wrapper.querySelectorAll('input:checked')).map(cb => cb.value).join('¶');
+    
+        removeErrorMessage(wrapper);
+        updateField({ recordId, fieldName, fieldValue, target: wrapper });
+    });
+    
+
+}
+
+
+
+
+// filemakerスクリプト実行 ------------------------------------------------------------------------
+document.querySelectorAll('.fm-script-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const script = btn.dataset.script;
+        const param = btn.dataset.param;
+
+        fetch('runScript.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ script, param })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('スクリプトが正常に実行されました');
+            } else {
+                console.error(data.response);
+                alert('スクリプトの実行に失敗しました: ' + data.message);
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert('通信エラーが発生しました');
         });
     });
 });
-
-
-
 
 
 

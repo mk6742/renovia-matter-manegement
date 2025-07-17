@@ -13,3 +13,25 @@ body{
 textarea{
     resize: vertical
 }
+
+select{
+    cursor: pointer;
+}
+
+input::-webkit-calendar-picker-indicator{
+    cursor: pointer;
+}
+
+.editable,
+.editable-checkbox{
+
+    + .error-message{
+        color: red;
+        @extend .u-fz--3xs;
+    }
+}
+
+
+.hide-on-condition{
+    display: inline-block;
+}

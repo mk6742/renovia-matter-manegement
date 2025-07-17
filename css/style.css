@@ -1,5 +1,7 @@
 :root {
-  --border-color: rgb(210, 210, 210);
+  --color-1:rgb(210, 210, 210);
+  --color-2:rgb(246, 246, 246);
+  --color-3:rgb(30, 30, 30);
 }
 
 body {
@@ -17,15 +19,33 @@ textarea {
   resize: vertical;
 }
 
+select {
+  cursor: pointer;
+}
+
+input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.editable + .error-message,
+.editable-checkbox + .error-message {
+  color: red;
+}
+
+.hide-on-condition {
+  display: inline-block;
+}
+
 .u-ff--en, .p-login__panel__heading h1 {
   font-family: "Roboto", sans-serif;
 }
 
-.u-fz--3xs, .p-matter__center__record-list__item__main__heading__left__texts__name > p:nth-of-type(1) {
+.u-fz--3xs, .p-matter__center__record-list__item__main__heading__left__texts__name > p:nth-of-type(1), .editable + .error-message,
+.editable-checkbox + .error-message {
   font-size: max(8px, 0.585vw);
 }
 
-.u-fz--2xs, .p-login__panel form label > span, .p-matter__center__record-list__item__main__contents__right__number > p, .p-matter__center__record-list__item__main__contents__right__info table tr td, .p-matter__center__record-list__item__main__contents__left__tab__btn li, .p-matter__center__record-list__item__main__heading__right__status__item > span {
+.u-fz--2xs, .p-login__panel form label > span, .p-matter__center__record-list__item__main__contents__right__number > p, .p-matter__center__record-list__item__main__contents__right__info table tr td, .p-matter__center__record-list__item__main__contents__left__tab__panel table tr td button, .p-matter__center__record-list__item__main__contents__left__tab__btn li, .p-matter__center__record-list__item__main__heading__right__status__item > span {
   font-size: max(10px, 0.732vw);
 }
 
@@ -166,14 +186,14 @@ textarea {
 .p-matter__center__record-list__item__main__contents__left__tab__btn li {
   font-weight: 500;
   padding: 0.2vw 1vw;
-  border: solid 1px rgb(216, 216, 216);
+  border: solid 1px var(--color-1);
   border-radius: 100vw;
   width: -moz-fit-content;
   width: fit-content;
   cursor: pointer;
 }
 .p-matter__center__record-list__item__main__contents__left__tab__btn li.is-active {
-  border-color: black;
+  border-color: var(--color-3);
 }
 .p-matter__center__record-list__item__main__contents__left__tab__panel table {
   margin-top: 1vw;
@@ -184,15 +204,29 @@ textarea {
 .p-matter__center__record-list__item__main__contents__left__tab__panel table.is-active {
   display: table;
 }
+.p-matter__center__record-list__item__main__contents__left__tab__panel table tr td {
+  padding-bottom: 0.3vw;
+}
 .p-matter__center__record-list__item__main__contents__left__tab__panel table tr td:first-child {
-  opacity: 0.5;
-  width: 25%;
-  padding: 0.5vw 0;
+  width: 22%;
+  padding-right: 1vw;
 }
 .p-matter__center__record-list__item__main__contents__left__tab__panel table tr td input,
-.p-matter__center__record-list__item__main__contents__left__tab__panel table tr td textarea {
-  background-color: rgb(248, 248, 248);
-  padding: 0.5vw;
+.p-matter__center__record-list__item__main__contents__left__tab__panel table tr td textarea,
+.p-matter__center__record-list__item__main__contents__left__tab__panel table tr td select {
+  background-color: var(--color-2);
+  padding: 0 0.3vw;
+}
+.p-matter__center__record-list__item__main__contents__left__tab__panel table tr td button {
+  padding: 0.3vw 1vw;
+  border-radius: 100vw;
+  border: solid 1px var(--color-3);
+}
+@media (hover: hover) {
+  .p-matter__center__record-list__item__main__contents__left__tab__panel table tr td button:hover {
+    background-color: var(--color-3);
+    color: #fff;
+  }
 }
 .p-matter__center__record-list__item__main__contents__right {
   display: flex;
@@ -212,10 +246,11 @@ textarea {
 .p-matter__center__record-list__item__main__contents__right__info table tr td {
   line-height: 1.3;
   word-break: break-word;
+  vertical-align: baseline;
   padding-bottom: 0.2vw;
 }
 .p-matter__center__record-list__item__main__contents__right__info table tr td:first-child {
-  width: 40%;
+  width: 35%;
   padding-right: 1vw;
 }
 .p-matter__center__record-list__item__main__contents__right__info table tr td input,
@@ -223,9 +258,16 @@ textarea {
 .p-matter__center__record-list__item__main__contents__right__info table tr td textarea {
   display: flex;
   width: 100%;
+  background-color: var(--color-2);
+  padding: 0 0.2vw;
+}
+.p-matter__center__record-list__item__main__contents__right__info table tr td textarea {
+  min-height: 2vw;
 }
 .p-matter__center__record-list__item__main__contents__right__info table tr td .editable-checkbox {
   display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 0.2vw;
 }
 .p-matter__center__record-list__item__main__contents__right__info table tr td .editable-checkbox label {
   display: flex;
@@ -256,7 +298,7 @@ textarea {
 .p-login__panel {
   padding: 4vw 3vw;
   border-radius: 2vw;
-  border: solid 1px var(--border-color);
+  border: solid 1px var(--color-1);
   width: 30vw;
   min-width: 400px;
 }
@@ -284,7 +326,7 @@ textarea {
   flex-direction: column;
   padding: 0.5vw 0.8vw;
   border-radius: 0.5vw;
-  border: solid 1px var(--border-color);
+  border: solid 1px var(--color-1);
   width: 100%;
 }
 .p-login__panel form label > span {
@@ -303,7 +345,7 @@ textarea {
 }
 .p-login__panel form button {
   padding: 1vw;
-  border: solid 1px black;
+  border: solid 1px var(--color-3);
   border-radius: 0.5vw;
   width: 100%;
   display: flex;
@@ -313,7 +355,7 @@ textarea {
 }
 @media (hover: hover) {
   .p-login__panel form button:hover {
-    background-color: black;
+    background-color: var(--color-3);
     color: #fff;
   }
 }
