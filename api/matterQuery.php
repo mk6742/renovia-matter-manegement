@@ -1,6 +1,6 @@
 <?php
 $TOKEN = $curlclass->login($URL, $DB, $AUTH);
-$LAYOUT = '案件_管理アポ';
+$LAYOUT = '案件_web表示用';
 
 $field = $_GET['field'] ?? '';
 $keyword = $_GET['keyword'] ?? '';

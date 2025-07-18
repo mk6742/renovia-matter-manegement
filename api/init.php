@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+
 
 // ----- FileMaker Data API -----
 require_once(__DIR__ . "/../cURL.php");
@@ -14,7 +14,9 @@ $AUTH    = base64_encode($ID . ':' . $PW);
 
 function ensureValidToken($curlclass, $URL, $DB)
 {
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
     // セッションに認証情報がなければエラー
     if (empty($_SESSION['user']['auth'])) {

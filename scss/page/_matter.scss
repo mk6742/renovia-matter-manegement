@@ -149,7 +149,7 @@
 
                         &__left{
                             border-right: solid 1px rgb(228, 228, 228);
-                            padding-right: 1vw;
+                            padding-right: 1.5vw;
                             width: 100%;
 
                             &__tab{
@@ -157,7 +157,7 @@
                                 &__btn{
                                     display: flex;
                                     flex-wrap: wrap;
-                                    gap: .5vw;
+                                    gap: .3vw;
 
                                     li{
                                         @extend .u-fz--2xs;
@@ -176,7 +176,7 @@
 
                                 &__panel{
 
-                                    table{
+                                    > table{
                                         margin-top: 1vw;
                                         table-layout: fixed;
                                         width: 100%;
@@ -190,18 +190,47 @@
                                     
                                             td{
                                                 @extend .u-fz--xs;
-                                                padding-bottom: .3vw;
+                                                width: fill-available;
+                                                padding: 1vw 0 1vw 1vw;
+                                                border-bottom: solid 1px rgb(240, 240, 240);
     
                                                 &:first-child{
                                                     width: 22%;
                                                     padding-right: 1vw;
+                                                    padding-left: 0;
+                                                }
+
+                                                > table{
+                                                    
+                                                    tr{
+
+                                                        &:first-child{
+
+                                                            td{
+                                                                padding-top: 0;
+                                                            }
+                                                        }
+                                                        
+                                                        &:last-child{
+
+                                                            td{
+                                                                padding-bottom: 0;
+                                                                border-bottom: none;
+                                                            }
+                                                        }
+                                                    }
                                                 }
 
                                                 input,
                                                 textarea,
                                                 select{
-                                                    background-color:var(--color-2);
                                                     padding: 0 .3vw;
+                                                    min-width: 37%;
+                                                }
+
+                                                textarea{
+                                                    width: fill-available;
+                                                    min-height: 2.5vw;
                                                 }
 
                                                 button{
@@ -209,6 +238,7 @@
                                                     border-radius: 100vw;
                                                     border: solid 1px var(--color-3);
                                                     @extend .u-fz--2xs;
+                                                    transition: .3s ease;
 
                                                     @media (hover: hover) {
                                                         &:hover {
@@ -228,6 +258,7 @@
                             display: flex;
                             flex-direction: column;
                             justify-content: space-between;
+                            gap: 3vw;
 
                             &__info{
                                 
@@ -247,8 +278,7 @@
                                             @extend .u-fz--2xs;
                                             line-height: 1.3;
                                             word-break: break-word;
-                                            vertical-align: baseline;
-                                            padding-bottom: .2vw;
+                                            padding-bottom: .3vw;
         
                                             &:first-child{
                                                 width: 35%;
@@ -260,7 +290,6 @@
                                             textarea{
                                                 display: flex;
                                                 width: 100%;
-                                                background-color: var(--color-2);
                                                 padding: 0 .2vw;
                                             }
 

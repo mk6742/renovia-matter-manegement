@@ -14,7 +14,7 @@ if (!$recordId || !$fieldName || $token === '') {
     exit;
 }
 
-$LAYOUT = '案件_管理アポ';
+$LAYOUT = '案件_web表示用';
 
 $postFields = json_encode([
     'fieldData' => [

@@ -2,7 +2,7 @@
 
 require_once(__DIR__ . '/api/authCheck.php');
 
-require_once('api/init.php');
+require_once(__DIR__ . '/api/init.php');
 
 // ログイン中のユーザー名を取得
 $id = htmlspecialchars($_SESSION['user']['id']);
@@ -11,7 +11,8 @@ $id = htmlspecialchars($_SESSION['user']['id']);
 $limit = 10;
 $offset = 1;
 
-include('api/matterQuery.php');
+include(__DIR__ . '/api/matterQuery.php');
+
 ?>
 
 <?php
@@ -113,6 +114,7 @@ include('header.php');
                     document.getElementById('p-matter__center__record-list').insertAdjacentHTML('beforeend', html);
 
                     bindTabEvents();
+                    updateValuelists();
 
                     offset += limit;
                     loading = false;

@@ -22,7 +22,7 @@ bindTabEvents();
 
 
 
-// 編集可能 ------------------------------------------------------------------------
+// 編集機能 ------------------------------------------------------------------------
 {
     function removeErrorMessage(target) {
         const next = target.querySelector?.('.error-message') || target.nextElementSibling;
@@ -105,38 +105,60 @@ bindTabEvents();
         removeErrorMessage(wrapper);
         updateField({ recordId, fieldName, fieldValue, target: wrapper });
     });
-    
-
 }
 
 
 
 
 // filemakerスクリプト実行 ------------------------------------------------------------------------
-document.querySelectorAll('.fm-script-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const script = btn.dataset.script;
-        const param = btn.dataset.param;
+document.querySelectorAll('.fm-script-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const script = button.dataset.script;
+        const param = button.dataset.param;
+        const parent = button.parentElement;
 
-        fetch('runScript.php', {
+        // 既存アラートやローダーを削除
+        parent.querySelectorAll('.custom-alert, .loading-spinner').forEach(el => el.remove());
+
+        // ローディング表示
+        const loader = document.createElement('div');
+        loader.className = 'loading-spinner';
+        parent.appendChild(loader);
+
+        // スクリプト実行
+        fetch('api/runScript.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ script, param })
         })
         .then(res => res.json())
         .then(data => {
-            if (data.status === 'success') {
-                alert('スクリプトが正常に実行されました');
-            } else {
-                console.error(data.response);
-                alert('スクリプトの実行に失敗しました: ' + data.message);
-            }
+            loader.remove();
+            showCustomAlert(parent, 'success', `「${script}」の実行に成功しました`);
         })
         .catch(err => {
-            console.error(err);
-            alert('通信エラーが発生しました');
+            loader.remove();
+            showCustomAlert(parent, 'error', '通信エラーが発生しました');
         });
     });
+
+    // アラート生成関数
+    function showCustomAlert(container, type, message) {
+        const alert = document.createElement('div');
+        alert.className = `custom-alert`;
+        alert.innerHTML = `
+            <div class="custom-alert__inner">
+                <p class="${type}">${message}</p>
+                <button>閉じる</button>
+            </div>
+        `;
+        container.appendChild(alert);
+
+        // 閉じる処理
+        alert.querySelector('button').addEventListener('click', () => {
+            alert.remove();
+        });
+    }
 });
 
 

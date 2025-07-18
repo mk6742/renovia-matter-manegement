@@ -15,7 +15,7 @@ if (!$curlclass->isTokenValid($URL, $DB, $token)) {
 }
 
 // 既存の値一覧を取得するレイアウト名（valueListsを取得）
-$baseLayout = '案件_管理アポ';
+$baseLayout = '案件_web表示用';
 $baseUrl = "$URL/fmi/data/vLatest/databases/$DB/layouts/" . urlencode($baseLayout);
 
 $res = $curlclass->get($baseUrl, [

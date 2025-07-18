@@ -112,6 +112,64 @@ class cURLClass
 		return $response;
 	} // FileMaker Script Function -----------------------------------------
 
+	// ----- FileMaker Get Script List --------------------------------
+	public function getScriptList($URL, $DB, $TOKEN)
+	{
+		$url = "$URL/fmi/data/vLatest/databases/$DB/scripts";
+
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => $url,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "GET",
+			CURLOPT_HTTPHEADER => array(
+				"Authorization: Bearer $TOKEN",
+				"Content-Type: application/json"
+			),
+		));
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+		curl_close($curl);
+
+		if ($err) {
+			return ['error' => true, 'message' => $err];
+		}
+
+		return json_decode($response, true);
+	}
+
+	// ----- FileMaker Run Script List --------------------------------
+	public function runScript($URL, $DB, $TOKEN, $LAYOUT, $scriptName, $param = '')
+	{
+		$url = "$URL/fmi/data/v1/databases/$DB/layouts/" . rawurlencode($LAYOUT) . "/script/" . rawurlencode($scriptName);
+		if (!empty($param)) {
+			$url .= "?script.param=" . urlencode($param);
+		}
+
+		$headers = [
+			"Authorization: Bearer $TOKEN",
+			"Content-Type: application/json"
+		];
+
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+		$result = curl_exec($ch);
+		$http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		curl_close($ch);
+
+		return [
+			'status' => $http_status,
+			'response' => json_decode($result, true)
+		];
+	}
 
 	// ----- FileMaker Find Record ------------------------------------
 	function find($URL, $DB, $LAYOUT, $TOKEN, $POSTFIELDS)

@@ -54,7 +54,7 @@ include('header.php');
                     <span>パスワード</span>
                     <div class="password-wrap">
                         <input type="password" name="password" required>
-                        <i id="eye" class="fa-solid fa-eye"></i>
+                        <i id="eye" class="fa-solid fa-eye-slash"></i>
 
                         <script>
                             let eye = document.getElementById("eye");
