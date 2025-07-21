@@ -26,9 +26,24 @@ select{
     cursor: pointer;
 }
 
-input::-webkit-calendar-picker-indicator{
-    cursor: pointer;
+input{
+
+    &::-webkit-calendar-picker-indicator{
+        cursor: pointer;
+    }
+    
+    &[type="number"]{
+        min-width: auto !important;
+        width: 3vw;
+    }
 }
+
+
+
+
+
+
+
 
 
 
@@ -36,12 +51,14 @@ input::-webkit-calendar-picker-indicator{
 .editable,
 .editable-checkbox{
 
-    + .error-message{
+    + .error-message,
+    .error-message{
         color: red;
         @extend .u-fz--3xs;
     }
 }
 
+// チェックボックス
 .editable-checkbox{
     display: flex;
     flex-wrap: wrap;
@@ -72,7 +89,7 @@ input::-webkit-calendar-picker-indicator{
 
 
 
-
+// スクリプト実行時のアラート
 .custom-alert{
     position: fixed;
     top: 0;

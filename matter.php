@@ -18,7 +18,7 @@ include(__DIR__ . '/api/matterQuery.php');
 <?php
 $title = '案件管理';
 $description = '';
-include('header.php');
+include('component/header.php');
 ?>
 
 <body>

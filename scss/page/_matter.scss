@@ -175,9 +175,9 @@
                                 }
 
                                 &__panel{
+                                    padding-top: .5vw;
 
                                     > table{
-                                        margin-top: 1vw;
                                         table-layout: fixed;
                                         width: 100%;
                                         display: none;
@@ -188,24 +188,29 @@
     
                                         tr{
                                     
+                                            th,
                                             td{
                                                 @extend .u-fz--xs;
                                                 width: fill-available;
-                                                padding: 1vw 0 1vw 1vw;
+                                                padding: 1vw 0 1vw 0;
                                                 border-bottom: solid 1px rgb(240, 240, 240);
-    
+                                                overflow: scroll;
+                                                
                                                 &:first-child{
                                                     width: 22%;
                                                     padding-right: 1vw;
                                                     padding-left: 0;
+                                                    font-weight: bold;
                                                 }
 
                                                 > table{
+                                                    width: 100%;
                                                     
                                                     tr{
 
                                                         &:first-child{
 
+                                                            th,
                                                             td{
                                                                 padding-top: 0;
                                                             }
@@ -213,9 +218,50 @@
                                                         
                                                         &:last-child{
 
+                                                            th,
                                                             td{
                                                                 padding-bottom: 0;
                                                                 border-bottom: none;
+                                                            }
+                                                        }
+
+                                                        th,
+                                                        td{
+                                                            padding-left: 0;
+
+                                                            &:first-child{
+                                                                font-weight: normal;
+                                                            }
+                                                        }
+                                                    }
+
+                                                    &.is-portal{
+                                                        writing-mode: vertical-lr;
+                                                        background-color: var(--color-2);
+
+                                                        tr{
+                                                            
+                                                            &:nth-of-type(2n){
+                                                                background-color: #efefef;
+                                                            }
+
+                                                            th,
+                                                            td{
+                                                                writing-mode: horizontal-tb;
+                                                                padding:.7vw;
+                                                                width: 9vw;
+                                                                border-bottom: solid 1px #fff !important;
+                                                            }
+
+                                                            th{
+                                                                position: sticky;
+                                                                left: 0;
+                                                                background-color: #fff;
+                                                                font-weight: normal;
+                                                                background-color: #323232;
+                                                                color: #fff;
+                                                                @extend .u-fz--2xs;
+                                                                vertical-align: middle;
                                                             }
                                                         }
                                                     }
@@ -225,7 +271,7 @@
                                                 textarea,
                                                 select{
                                                     padding: 0 .3vw;
-                                                    min-width: 37%;
+                                                    min-width: 30%;
                                                 }
 
                                                 textarea{
@@ -257,11 +303,40 @@
                         &__right{
                             display: flex;
                             flex-direction: column;
-                            justify-content: space-between;
-                            gap: 3vw;
+                            gap: 2vw;
 
                             &__info{
-                                
+
+                                &__link{
+                                    padding: 1vw;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    gap: .5vw;
+                                    border: solid 1px var(--color-3);
+                                    border-radius: .3vw;
+                                    transition: .3s ease;
+
+                                    &.is-empty{
+                                        pointer-events: none;
+                                    }
+
+                                    > p{
+                                        @extend .u-fz--xs;
+                                    }
+
+                                    i{
+                                        @extend .u-fz--3xs;
+                                    }
+
+                                    @media (hover: hover) {
+                                        &:hover {
+                                            background-color: var(--color-3);
+                                            color: #fff;
+                                        }
+                                    }
+                                }
+
                                 table{
                                     flex-shrink: 0;
                                     height: fit-content;
@@ -269,7 +344,7 @@
                                     width: 100%;
 
                                     &:not(:first-child){
-                                        margin-top: 2vw;
+                                        margin-top: 1vw;
                                     }
         
                                     tr{
@@ -317,12 +392,14 @@
                                 }
                             }
 
+                            &__bottom{
 
-                            &__number{
+                                &__number{
                                 
-                                > p{
-                                    @extend .u-fz--2xs;
-                                    opacity: .6;
+                                    > p{
+                                        @extend .u-fz--2xs;
+                                        opacity: .6;
+                                    }
                                 }
                             }
                         }

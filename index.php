@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php
 $title = 'ログイン';
 $description = '';
-include('header.php');
+include('component/header.php');
 ?>
 
 <body>
