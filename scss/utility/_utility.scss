@@ -1,43 +1,43 @@
-.u-ff--en{
+@mixin u-ff--en {
     font-family: "Roboto", sans-serif;
 }
 
-.u-fz--3xs{
+@mixin u-fz--3xs {
     font-size: max(8px, .585vw);
 }
 
-.u-fz--2xs{
+@mixin u-fz--2xs {
     font-size: max(10px, .732vw);
 }
 
-.u-fz--xs{
+@mixin u-fz--xs {
     font-size: max(12px, .878vw);
 }
 
-.u-fz--sm{
+@mixin u-fz--sm {
     font-size: max(14px, 1.025vw);
 }
 
-.u-fz--base{
+@mixin u-fz--base {
     font-size: max(16px, 1.17vw);
 }
 
-.u-fz--xl{
+@mixin u-fz--xl {
     font-size: max(20px, 1.46vw);
 }
 
-.u-fz--2xl{
+@mixin u-fz--2xl {
     font-size: max(25px, 1.84vw);
 }
 
-.u-fz--3xl{
+@mixin u-fz--3xl {
     font-size: max(30px, 2.2vw);
 }
 
-.u-fz--4xl{
+@mixin u-fz--4xl {
     font-size: max(40px, 2.93vw);
 }
 
-.u-fz--5xl{
+@mixin u-fz--5xl {
     font-size: max(50px, 3.66vw);
 }

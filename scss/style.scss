@@ -1,18 +1,16 @@
 // base
-@import "./base/_setting";
-@import "./base/_base";
+@use "./base/setting";
+@use "./base/base";
 
 // utility
-@import "./utility/_utility";
+@use "./utility/utility";
 
 // layout
 
-
 // component
-// @import "./component/_header";
-// @import "./component/_footer";
+// @use "./component/header";
+// @use "./component/footer";
 
 // page
-@import "./page/_matter";
-@import "./page/_login";
-
+@use "./page/matter";
+@use "./page/login";

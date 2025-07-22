@@ -30,10 +30,9 @@ function formatTimeJP($rawTime)
 {
     if (empty($rawTime)) return '';
 
-    // H:i:s 形式を期待して変換（例：14:00:00 → 14:00）
     $timeObj = DateTime::createFromFormat('H:i:s', $rawTime);
     if ($timeObj !== false) {
-        return $timeObj->format('G:i'); // 先頭0なし
+        return $timeObj->format('H:i');
     }
 
     // フォーマットに合わない場合はそのまま出力（HTMLエスケープ）

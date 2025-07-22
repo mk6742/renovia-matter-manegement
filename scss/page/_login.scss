@@ -1,3 +1,6 @@
+@use '../utility/utility' as util;
+
+
 .p-login{
     display: flex;
     flex-direction: column;
@@ -20,13 +23,13 @@
             gap: .5vw;
     
             > p{
-                @extend .u-fz--xs;
+                @include util.u-fz--xs;
                 font-weight: 600;
             }
     
             h1{
-                @extend .u-ff--en;
-                @extend .u-fz--5xl;
+                @include util.u-ff--en;
+                @include util.u-fz--5xl;
                 font-weight: 500;
                 line-height: 1;
             }
@@ -48,12 +51,12 @@
                 width: 100%;
 
                 > span{
-                    @extend .u-fz--2xs;
+                    @include util.u-fz--2xs;
                     opacity: .6;
                 }
 
                 input{
-                    @extend .u-fz--base;
+                    @include util.u-fz--base;
                     background-color: transparent;
                 }
 
@@ -90,7 +93,7 @@
 
         .error{
             color: red;
-            @extend .u-fz--xs;
+            @include util.u-fz--xs;
             padding-top: 1vw;
         }
     }

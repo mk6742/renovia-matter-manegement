@@ -19,11 +19,11 @@ input,
 textarea,
 select {
   background-color: var(--color-2);
+  field-sizing: content;
 }
 
 textarea {
   resize: vertical;
-  field-sizing: content;
 }
 
 select {
@@ -33,21 +33,19 @@ select {
 input::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
-input[type=number] {
-  min-width: auto !important;
-  width: 3vw;
-}
 
 .editable + .error-message,
 .editable .error-message,
 .editable-checkbox + .error-message,
 .editable-checkbox .error-message {
   color: red;
+  font-size: max(8px, 0.585vw);
 }
 
 .editable-checkbox {
   display: flex;
   flex-wrap: wrap;
+  gap: 0 0.5vw;
 }
 
 .loading-spinner {
@@ -95,6 +93,7 @@ input[type=number] {
   border-radius: 0.5vw;
 }
 .custom-alert__inner > p {
+  font-size: max(14px, 1.025vw);
   font-weight: bold;
 }
 .custom-alert__inner > p.success {
@@ -108,6 +107,7 @@ input[type=number] {
   width: fit-content;
   padding: 0.5vw 1vw !important;
   border-radius: 0.3vw !important;
+  font-size: max(12px, 0.878vw);
   background-color: var(--color-3);
   border: solid 1px var(--color-3);
   color: #fff;
@@ -130,56 +130,6 @@ input[type=number] {
     transform: translateY(0);
   }
 }
-.u-ff--en, .p-login__panel__heading h1 {
-  font-family: "Roboto", sans-serif;
-}
-
-.u-fz--3xs, .p-matter__center__record-list__item__main__contents__right__info__link i, .p-matter__center__record-list__item__main__heading__left__texts__name > p:nth-of-type(1), .editable + .error-message,
-.editable .error-message,
-.editable-checkbox + .error-message,
-.editable-checkbox .error-message {
-  font-size: max(8px, 0.585vw);
-}
-
-.u-fz--2xs, .p-login__panel form label > span, .p-matter__center__record-list__item__main__contents__right__bottom__number > p, .p-matter__center__record-list__item__main__contents__right__info table tr td, .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th button,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td button, .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th > table.is-portal tr th,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td > table.is-portal tr th, .p-matter__center__record-list__item__main__contents__left__tab__btn li, .p-matter__center__record-list__item__main__heading__right__status__item > span {
-  font-size: max(10px, 0.732vw);
-}
-
-.u-fz--xs, .p-login__panel .error, .p-login__panel__heading > p, .p-matter__center__record-list__item__main__contents__right__info__link > p, .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td, .p-matter__center__record-list__item__main__heading__right__status__item, .p-matter__center__record-list__item__main__heading__left__texts__number > p, .p-matter__right form .select-wrap > p, .custom-alert__inner > button {
-  font-size: max(12px, 0.878vw);
-}
-
-.u-fz--sm, .p-matter__right form, .p-matter__left > p, .custom-alert__inner > p {
-  font-size: max(14px, 1.025vw);
-}
-
-.u-fz--base, .p-login__panel form label input, .p-matter__center__record-list__item__main__heading__left__texts__name > p:nth-of-type(2) {
-  font-size: max(16px, 1.17vw);
-}
-
-.u-fz--xl {
-  font-size: max(20px, 1.46vw);
-}
-
-.u-fz--2xl {
-  font-size: max(25px, 1.84vw);
-}
-
-.u-fz--3xl {
-  font-size: max(30px, 2.2vw);
-}
-
-.u-fz--4xl {
-  font-size: max(40px, 2.93vw);
-}
-
-.u-fz--5xl, .p-login__panel__heading h1 {
-  font-size: max(50px, 3.66vw);
-}
-
 .p-matter {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
@@ -190,11 +140,20 @@ input[type=number] {
   top: 0;
   height: 100vh;
 }
+.p-matter__left > p {
+  font-size: max(14px, 1.025vw);
+}
+.p-matter__right form {
+  font-size: max(14px, 1.025vw);
+}
 .p-matter__right form .select-wrap {
   display: flex;
   align-items: flex-end;
   gap: 1vw;
   padding-bottom: 0.5vw;
+}
+.p-matter__right form .select-wrap > p {
+  font-size: max(12px, 0.878vw);
 }
 .p-matter__right form .select-wrap select {
   padding: 0.2vw 1vw;
@@ -211,6 +170,10 @@ input[type=number] {
 .p-matter__right form .input-wrap img {
   opacity: 0.5;
   width: 1.1vw;
+}
+.p-matter__right form .input-wrap input {
+  background-color: transparent;
+  field-sizing: fixed;
 }
 .p-matter__center {
   border-right: solid 1px rgb(228, 228, 228);
@@ -247,12 +210,19 @@ input[type=number] {
 .p-matter__center__record-list__item__main__heading__left > span img {
   width: 30%;
 }
+.p-matter__center__record-list__item__main__heading__left__texts__name > p:nth-of-type(1) {
+  font-size: max(8px, 0.585vw);
+}
 .p-matter__center__record-list__item__main__heading__left__texts__name > p:nth-of-type(2) {
+  font-size: max(16px, 1.17vw);
   font-weight: 600;
   line-height: 1;
 }
 .p-matter__center__record-list__item__main__heading__left__texts__number {
   padding-top: 0.5vw;
+}
+.p-matter__center__record-list__item__main__heading__left__texts__number > p {
+  font-size: max(12px, 0.878vw);
 }
 .p-matter__center__record-list__item__main__heading__right__status {
   display: flex;
@@ -260,11 +230,14 @@ input[type=number] {
 }
 .p-matter__center__record-list__item__main__heading__right__status__item {
   display: flex;
+  font-size: max(12px, 0.878vw);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .p-matter__center__record-list__item__main__heading__right__status__item > span {
   opacity: 0.5;
+  font-size: max(10px, 0.732vw);
 }
 .p-matter__center__record-list__item__main__contents {
   padding-top: 1.5vw;
@@ -283,6 +256,7 @@ input[type=number] {
   gap: 0.3vw;
 }
 .p-matter__center__record-list__item__main__contents__left__tab__btn li {
+  font-size: max(10px, 0.732vw);
   font-weight: 500;
   padding: 0.2vw 1vw;
   border: solid 1px var(--color-1);
@@ -297,22 +271,26 @@ input[type=number] {
 .p-matter__center__record-list__item__main__contents__left__tab__panel {
   padding-top: 0.5vw;
 }
+.p-matter__center__record-list__item__main__contents__left__tab__panel > * {
+  display: none;
+}
+.p-matter__center__record-list__item__main__contents__left__tab__panel > *.is-active {
+  display: table;
+}
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table {
   table-layout: fixed;
   width: 100%;
-  display: none;
-}
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table.is-active {
-  display: table;
 }
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th,
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td {
+  font-size: max(12px, 0.878vw);
   width: -webkit-fill-available;
   width: -moz-available;
   width: fill-available;
   padding: 1vw 0 1vw 0;
   border-bottom: solid 1px rgb(240, 240, 240);
   overflow: scroll;
+  overflow-y: clip;
 }
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th:first-child,
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td:first-child {
@@ -349,6 +327,7 @@ input[type=number] {
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td > table tr th:first-child,
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td > table tr td:first-child {
   font-weight: normal;
+  width: 20%;
 }
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th > table.is-portal,
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td > table.is-portal {
@@ -367,16 +346,18 @@ input[type=number] {
   padding: 0.7vw;
   width: 9vw;
   border-bottom: solid 1px #fff !important;
+  vertical-align: middle;
 }
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th > table.is-portal tr th,
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td > table.is-portal tr th {
+  width: 6vw;
   position: sticky;
   left: 0;
   background-color: #fff;
   font-weight: normal;
   background-color: #323232;
   color: #fff;
-  vertical-align: middle;
+  font-size: max(10px, 0.732vw);
 }
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th input,
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th textarea,
@@ -387,18 +368,27 @@ input[type=number] {
   padding: 0 0.3vw;
   min-width: 30%;
 }
+.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th input[type=checkbox],
+.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th textarea[type=checkbox],
+.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th select[type=checkbox],
+.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td input[type=checkbox],
+.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td textarea[type=checkbox],
+.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td select[type=checkbox] {
+  min-width: auto;
+}
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th textarea,
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td textarea {
   width: -webkit-fill-available;
   width: -moz-available;
   width: fill-available;
-  min-height: 2.5vw;
+  min-height: 4vw;
 }
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th button,
 .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td button {
   padding: 0.3vw 1vw;
   border-radius: 100vw;
   border: solid 1px var(--color-3);
+  font-size: max(10px, 0.732vw);
   transition: 0.3s ease;
 }
 @media (hover: hover) {
@@ -413,7 +403,40 @@ input[type=number] {
   flex-direction: column;
   gap: 2vw;
 }
-.p-matter__center__record-list__item__main__contents__right__info__link {
+.p-matter__center__record-list__item__main__contents__right__tab__btn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3vw;
+}
+.p-matter__center__record-list__item__main__contents__right__tab__btn li {
+  font-size: max(10px, 0.732vw);
+  font-weight: 500;
+  padding: 0.2vw 1vw;
+  border: solid 1px var(--color-1);
+  border-radius: 100vw;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+}
+.p-matter__center__record-list__item__main__contents__right__tab__btn li.is-active {
+  border-color: var(--color-3);
+}
+.p-matter__center__record-list__item__main__contents__right__tab__panel {
+  padding-top: 1vw;
+}
+.p-matter__center__record-list__item__main__contents__right__tab__panel > * {
+  display: none;
+  font-size: max(12px, 0.878vw);
+  width: 100%;
+  min-height: 20vw;
+}
+.p-matter__center__record-list__item__main__contents__right__tab__panel > *.is-active {
+  display: table;
+}
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info > *:not(:first-child) {
+  margin-top: 1vw;
+}
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info__link {
   padding: 1vw;
   display: flex;
   justify-content: center;
@@ -423,58 +446,66 @@ input[type=number] {
   border-radius: 0.3vw;
   transition: 0.3s ease;
 }
-.p-matter__center__record-list__item__main__contents__right__info__link.is-empty {
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info__link.is-empty {
   pointer-events: none;
 }
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info__link > p {
+  font-size: max(12px, 0.878vw);
+}
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info__link i {
+  font-size: max(8px, 0.585vw);
+}
 @media (hover: hover) {
-  .p-matter__center__record-list__item__main__contents__right__info__link:hover {
+  .p-matter__center__record-list__item__main__contents__right__tab__panel__info__link:hover {
     background-color: var(--color-3);
     color: #fff;
   }
 }
-.p-matter__center__record-list__item__main__contents__right__info table {
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info table {
   flex-shrink: 0;
   height: -moz-fit-content;
   height: fit-content;
   table-layout: fixed;
   width: 100%;
 }
-.p-matter__center__record-list__item__main__contents__right__info table:not(:first-child) {
-  margin-top: 1vw;
-}
-.p-matter__center__record-list__item__main__contents__right__info table tr td {
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info table tr td {
+  font-size: max(10px, 0.732vw);
   line-height: 1.3;
   word-break: break-word;
   padding-bottom: 0.3vw;
 }
-.p-matter__center__record-list__item__main__contents__right__info table tr td:first-child {
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info table tr td:first-child {
   width: 35%;
   padding-right: 1vw;
 }
-.p-matter__center__record-list__item__main__contents__right__info table tr td input,
-.p-matter__center__record-list__item__main__contents__right__info table tr td select,
-.p-matter__center__record-list__item__main__contents__right__info table tr td textarea {
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info table tr td input,
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info table tr td select,
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info table tr td textarea {
   display: flex;
   width: 100%;
   padding: 0 0.2vw;
 }
-.p-matter__center__record-list__item__main__contents__right__info table tr td textarea {
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info table tr td textarea {
   min-height: 2vw;
 }
-.p-matter__center__record-list__item__main__contents__right__info table tr td .editable-checkbox {
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info table tr td .editable-checkbox {
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 0.2vw;
 }
-.p-matter__center__record-list__item__main__contents__right__info table tr td .editable-checkbox label {
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info table tr td .editable-checkbox label {
   display: flex;
   gap: 0.2vw;
 }
-.p-matter__center__record-list__item__main__contents__right__info table tr td .editable-checkbox label input {
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info table tr td .editable-checkbox label input {
   width: -moz-fit-content;
   width: fit-content;
 }
-.p-matter__center__record-list__item__main__contents__right__bottom__number > p {
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info__bottom {
+  padding-top: 2vw;
+}
+.p-matter__center__record-list__item__main__contents__right__tab__panel__info__bottom > p {
+  font-size: max(10px, 0.732vw);
   opacity: 0.6;
 }
 .p-matter__center .loading {
@@ -505,9 +536,12 @@ input[type=number] {
   gap: 0.5vw;
 }
 .p-login__panel__heading > p {
+  font-size: max(12px, 0.878vw);
   font-weight: 600;
 }
 .p-login__panel__heading h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: max(50px, 3.66vw);
   font-weight: 500;
   line-height: 1;
 }
@@ -527,9 +561,11 @@ input[type=number] {
   width: 100%;
 }
 .p-login__panel form label > span {
+  font-size: max(10px, 0.732vw);
   opacity: 0.6;
 }
 .p-login__panel form label input {
+  font-size: max(16px, 1.17vw);
   background-color: transparent;
 }
 .p-login__panel form label .password-wrap {
@@ -561,5 +597,6 @@ input[type=number] {
 }
 .p-login__panel .error {
   color: red;
+  font-size: max(12px, 0.878vw);
   padding-top: 1vw;
 }

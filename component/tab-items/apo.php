@@ -1,39 +1,50 @@
 <table class="is-active">
     <tr>
-        <td>コール希望日：</td>
+        <td>受付日時：</td>
         <td>
-            <input type="date" class="editable" name="d_アポイント希望日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_アポイント希望日'] ?? '')) ?>">
-            <div style="display:flex; align-items:center; gap:.5vw; padding-top:.3vw;">
-                <button
-                    class="fm-script-btn"
-                    data-script="テストスクリプト"
-                    data-record-id="<?= $record['recordId'] ?>"
-                    data-param="">
-                    テストスクリプト
-                </button>
-            </div>
+            <input type="date" class="editable" name="d_受付日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_受付日'] ?? '')) ?>">
+            <input type="time" class="editable" name="ti_受付時間" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_受付時間'] ?? '')) ?>">
         </td>
-
     </tr>
     <tr>
-        <td>コール希望時間：</td>
+        <td>アポ担当者：</td>
         <td>
+            <select class="editable" name="t_アポ担当者" data-valuelist="担当者一覧">
+                <option value="<?= htmlspecialchars($record['fieldData']['t_アポ担当者']) ?>"></option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>支店：</td>
+        <td>
+            <input type="text" class="editable" name="t_支店判別" value="<?= htmlspecialchars($record['fieldData']['t_支店判別'] ?? '') ?>">
+        </td>
+    </tr>
+    <tr>
+        <td>Web区分：</td>
+        <td>
+            <select class="editable" name="t_web区分" data-valuelist="web区分">
+                <option value="<?= htmlspecialchars($record['fieldData']['t_web区分']) ?>"></option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>確認者：</td>
+        <td>
+            <input type="text" class="editable" name="t_確認者" value="<?= htmlspecialchars($record['fieldData']['t_確認者'] ?? '') ?>">
+        </td>
+    </tr>
+    <tr>
+        <td>コール希望日時：</td>
+        <td>
+            <input type="date" class="editable" name="d_アポイント希望日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_アポイント希望日'] ?? '')) ?>"><br><br>
             <input type="time" class="editable" name="ti_アポイント希望時間1" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_アポイント希望時間1'] ?? '')) ?>"> ~ <input type="time" class="editable" name="ti_アポイント希望時間2" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_アポイント希望時間2'] ?? '')) ?>">
         </td>
     </tr>
-    <tr>
-        <td>築年数：</td>
-        <td>
-            <input type="number" class="editable" name="t_築年数" value="<?= htmlspecialchars($record['fieldData']['t_築年数'] ?? '') ?>">
-        </td>
-    </tr>
-    <tr>
-        <td>アポ種別：</td>
-        <td>
-            <select class="editable" name="t_アポ種別" data-valuelist="アポ種別">
-                <option value="<?= htmlspecialchars($record['fieldData']['t_アポ種別']) ?>"></option>
-            </select>
-        </td>
+    <td>築年数：</td>
+    <td>
+        <input type="number" class="editable" name="t_築年数" value="<?= htmlspecialchars($record['fieldData']['t_築年数'] ?? '') ?>">
+    </td>
     </tr>
     <tr>
         <td>保険会社：</td>

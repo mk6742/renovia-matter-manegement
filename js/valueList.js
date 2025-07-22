@@ -37,7 +37,7 @@ function updateValuelists() {
                 const type = wrapper.dataset.valuelist;
                 const name = wrapper.dataset.name;
                 const selectedRaw = wrapper.dataset.selected || '';
-                const selected = selectedRaw.split('¶');
+                const selected = selectedRaw.split(/\r?\n/); 
                 const values = data.lists[type] || [];
 
                 wrapper.innerHTML = values.map(val => {

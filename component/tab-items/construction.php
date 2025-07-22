@@ -44,27 +44,34 @@
         </td>
     </tr>
     <tr>
-        <td>着工日：</td>
+        <td>日程：</td>
         <td>
-            <input type="date" class="editable" name="d_工務店着工日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_工務店着工日'] ?? '')) ?>">
-        </td>
-    </tr>
-    <tr>
-        <td>完工予定日：</td>
-        <td>
-            <input type="date" class="editable" name="d_工務店完工予定日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_工務店完工予定日'] ?? '')) ?>">
-        </td>
-    </tr>
-    <tr>
-        <td>完工日：</td>
-        <td>
-            <input type="date" class="editable" name="d_工務店完工日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_工務店完工日'] ?? '')) ?>">
-        </td>
-    </tr>
-    <tr>
-        <td>施工後やり直し日：</td>
-        <td>
-            <input type="date" class="editable" name="d_施工後やり直し日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_施工後やり直し日'] ?? '')) ?>">
+            <table>
+                <tr>
+                    <td>着工日</td>
+                    <td>
+                        <input type="date" class="editable" name="d_工務店着工日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_工務店着工日'] ?? '')) ?>">
+                    </td>
+                </tr>
+                <tr>
+                    <td>完工予定日</td>
+                    <td>
+                        <input type="date" class="editable" name="d_工務店完工予定日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_工務店完工予定日'] ?? '')) ?>">
+                    </td>
+                </tr>
+                <tr>
+                    <td>完工日</td>
+                    <td>
+                        <input type="date" class="editable" name="d_工務店完工日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_工務店完工日'] ?? '')) ?>">
+                    </td>
+                </tr>
+                <tr>
+                    <td>施工後やり直し日</td>
+                    <td>
+                        <input type="date" class="editable" name="d_施工後やり直し日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_施工後やり直し日'] ?? '')) ?>">
+                    </td>
+                </tr>
+            </table>
         </td>
     </tr>
     <tr>

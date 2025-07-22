@@ -6,21 +6,28 @@
         </td>
     </tr>
     <tr>
-        <td>現地調査予定日：</td>
+        <td>現地調査：</td>
         <td>
-            <input type="date" class="editable" name="d_現地調査予定日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_現地調査予定日'] ?? '')) ?>">
-        </td>
-    </tr>
-    <tr>
-        <td>現地調査時間：</td>
-        <td>
-            <input type="time" class="editable" name="ti_現地調査時間1" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_現地調査時間1'] ?? '')) ?>"> ~ <input type="time" class="editable" name="ti_現地調査時間2" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_現地調査時間2'] ?? '')) ?>">
-        </td>
-    </tr>
-    <tr>
-        <td>現地調査完了日：</td>
-        <td>
-            <input type="date" class="editable" name="d_現地調査完了日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_現地調査完了日'] ?? '')) ?>">
+            <table>
+                <tr>
+                    <td>予定日</td>
+                    <td>
+                        <input type="date" class="editable" name="d_現地調査予定日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_現地調査予定日'] ?? '')) ?>">
+                    </td>
+                </tr>
+                <tr>
+                    <td>予定時間</td>
+                    <td>
+                        <input type="time" class="editable" name="ti_現地調査時間1" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_現地調査時間1'] ?? '')) ?>"> ~ <input type="time" class="editable" name="ti_現地調査時間2" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_現地調査時間2'] ?? '')) ?>">
+                    </td>
+                </tr>
+                <tr>
+                    <td>完了日</td>
+                    <td>
+                        <input type="date" class="editable" name="d_現地調査完了日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_現地調査完了日'] ?? '')) ?>">
+                    </td>
+                </tr>
+            </table>
         </td>
     </tr>
     <tr>
@@ -61,9 +68,19 @@
         </td>
     </tr>
     <tr>
-        <td>アトカク者メモ：</td>
+        <td>アトカクメモ：</td>
         <td>
+            <textarea class="editable" name="t_アポイントmemo">
             <?= htmlspecialchars($record['fieldData']['t_アポイントmemo'] ?? '') ?>
+            </textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>管理確認：</td>
+        <td>
+            <textarea class="editable" name="t_保留理由">
+            <?= htmlspecialchars($record['fieldData']['t_保留理由'] ?? '') ?>
+            </textarea>
         </td>
     </tr>
 </table>

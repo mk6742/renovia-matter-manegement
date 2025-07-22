@@ -1,7 +1,9 @@
+@use '../utility/utility' as util;
+
+
 .p-matter{
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
-
 
     &__left,
     &__right{
@@ -14,14 +16,14 @@
     &__left{
 
         > p{
-            @extend .u-fz--sm;
+            @include util.u-fz--sm;
         }
     }
 
     &__right{
 
         form{
-            @extend .u-fz--sm;
+            @include util.u-fz--sm;
 
             .select-wrap{
                 display: flex;
@@ -30,7 +32,7 @@
                 padding-bottom: .5vw;
 
                 > p{
-                    @extend .u-fz--xs;
+                    @include util.u-fz--xs;
                 }
 
                 select{
@@ -50,6 +52,11 @@
                 img{
                     opacity: .5;
                     width: 1.1vw;
+                }
+
+                input{
+                    background-color: transparent;
+                    field-sizing: fixed;
                 }
             }
         }
@@ -99,11 +106,11 @@
                                     > p{
                                 
                                         &:nth-of-type(1){
-                                            @extend .u-fz--3xs;
+                                            @include util.u-fz--3xs;
                                         }
         
                                         &:nth-of-type(2){
-                                            @extend .u-fz--base;
+                                            @include util.u-fz--base;
                                             font-weight: 600;
                                             line-height: 1;
                                         }
@@ -114,7 +121,7 @@
                                     padding-top: .5vw;
     
                                     > p{
-                                        @extend .u-fz--xs;
+                                        @include util.u-fz--xs;
                                     }
                                 }
                             }
@@ -128,13 +135,14 @@
     
                                 &__item{
                                     display: flex;
-                                    @extend .u-fz--xs;
+                                    @include util.u-fz--xs;
                                     display: flex;
                                     flex-direction: column;
+                                    justify-content: space-between;
     
                                     > span{
                                         opacity: .5;
-                                        @extend .u-fz--2xs
+                                        @include util.u-fz--2xs
                                     }
                                 }
                             }
@@ -160,7 +168,7 @@
                                     gap: .3vw;
 
                                     li{
-                                        @extend .u-fz--2xs;
+                                        @include util.u-fz--2xs;
                                         font-weight: 500;
                                         padding: .2vw 1vw;
                                         border: solid 1px var(--color-1);
@@ -177,24 +185,28 @@
                                 &__panel{
                                     padding-top: .5vw;
 
-                                    > table{
-                                        table-layout: fixed;
-                                        width: 100%;
+                                    > *{
                                         display: none;
 
                                         &.is-active{
                                             display: table;
                                         }
+                                    }
+
+                                    > table{
+                                        table-layout: fixed;
+                                        width: 100%;
     
                                         tr{
                                     
                                             th,
                                             td{
-                                                @extend .u-fz--xs;
+                                                @include util.u-fz--xs;
                                                 width: fill-available;
                                                 padding: 1vw 0 1vw 0;
                                                 border-bottom: solid 1px rgb(240, 240, 240);
                                                 overflow: scroll;
+                                                overflow-y: clip;
                                                 
                                                 &:first-child{
                                                     width: 22%;
@@ -231,6 +243,7 @@
 
                                                             &:first-child{
                                                                 font-weight: normal;
+                                                                width: 20%;
                                                             }
                                                         }
                                                     }
@@ -251,17 +264,18 @@
                                                                 padding:.7vw;
                                                                 width: 9vw;
                                                                 border-bottom: solid 1px #fff !important;
+                                                                vertical-align: middle;
                                                             }
 
                                                             th{
+                                                                width: 6vw;
                                                                 position: sticky;
                                                                 left: 0;
                                                                 background-color: #fff;
                                                                 font-weight: normal;
                                                                 background-color: #323232;
                                                                 color: #fff;
-                                                                @extend .u-fz--2xs;
-                                                                vertical-align: middle;
+                                                                @include util.u-fz--2xs;
                                                             }
                                                         }
                                                     }
@@ -272,18 +286,22 @@
                                                 select{
                                                     padding: 0 .3vw;
                                                     min-width: 30%;
+
+                                                    &[type="checkbox"]{
+                                                        min-width: auto;
+                                                    }
                                                 }
 
                                                 textarea{
                                                     width: fill-available;
-                                                    min-height: 2.5vw;
+                                                    min-height: 4vw;
                                                 }
 
                                                 button{
                                                     padding: .3vw 1vw;
                                                     border-radius: 100vw;
                                                     border: solid 1px var(--color-3);
-                                                    @extend .u-fz--2xs;
+                                                    @include util.u-fz--2xs;
                                                     transition: .3s ease;
 
                                                     @media (hover: hover) {
@@ -305,101 +323,141 @@
                             flex-direction: column;
                             gap: 2vw;
 
-                            &__info{
+                            &__tab{
 
-                                &__link{
-                                    padding: 1vw;
+                                &__btn{
                                     display: flex;
-                                    justify-content: center;
-                                    align-items: center;
-                                    gap: .5vw;
-                                    border: solid 1px var(--color-3);
-                                    border-radius: .3vw;
-                                    transition: .3s ease;
+                                    flex-wrap: wrap;
+                                    gap: .3vw;
 
-                                    &.is-empty{
-                                        pointer-events: none;
-                                    }
+                                    li{
+                                        @include util.u-fz--2xs;
+                                        font-weight: 500;
+                                        padding: .2vw 1vw;
+                                        border: solid 1px var(--color-1);
+                                        border-radius: 100vw;
+                                        width: fit-content;
+                                        cursor: pointer;
 
-                                    > p{
-                                        @extend .u-fz--xs;
-                                    }
-
-                                    i{
-                                        @extend .u-fz--3xs;
-                                    }
-
-                                    @media (hover: hover) {
-                                        &:hover {
-                                            background-color: var(--color-3);
-                                            color: #fff;
+                                        &.is-active{
+                                            border-color: var(--color-3);
                                         }
                                     }
                                 }
 
-                                table{
-                                    flex-shrink: 0;
-                                    height: fit-content;
-                                    table-layout: fixed;
-                                    width: 100%;
+                                &__panel{
+                                    padding-top: 1vw;
 
-                                    &:not(:first-child){
-                                        margin-top: 1vw;
+                                    > *{
+                                        display: none;
+                                        @include util.u-fz--xs;
+                                        width: 100%;
+                                        min-height: 20vw;
+
+                                        &.is-active{
+                                            display: table;
+                                        }
                                     }
+
+                                    &__info{
+
+                                        > *{
+
+                                            &:not(:first-child){
+                                                margin-top: 1vw;
+                                            }
+                                        }
+
+                                        &__link{
+                                            padding: 1vw;
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            gap: .5vw;
+                                            border: solid 1px var(--color-3);
+                                            border-radius: .3vw;
+                                            transition: .3s ease;
         
-                                    tr{
-                                        
-                                        td{
-                                            @extend .u-fz--2xs;
-                                            line-height: 1.3;
-                                            word-break: break-word;
-                                            padding-bottom: .3vw;
+                                            &.is-empty{
+                                                pointer-events: none;
+                                            }
         
-                                            &:first-child{
-                                                width: 35%;
-                                                padding-right: 1vw;
+                                            > p{
+                                                @include util.u-fz--xs;
                                             }
-    
-                                            input,
-                                            select,
-                                            textarea{
-                                                display: flex;
-                                                width: 100%;
-                                                padding: 0 .2vw;
+        
+                                            i{
+                                                @include util.u-fz--3xs;
                                             }
-
-                                            textarea{
-                                                min-height: 2vw;
-                                            }
-
-                                            .editable-checkbox{
-                                                display: flex;
-                                                flex-wrap: wrap;
-                                                padding-bottom: .2vw;
-
-                                                label{
-                                                    display: flex;
-                                                    gap: .2vw;
-
-                                                    input{
-                                                        width: fit-content;
-                                                    }
+        
+                                            @media (hover: hover) {
+                                                &:hover {
+                                                    background-color: var(--color-3);
+                                                    color: #fff;
                                                 }
                                             }
+                                        }
+        
+                                        table{
+                                            flex-shrink: 0;
+                                            height: fit-content;
+                                            table-layout: fixed;
+                                            width: 100%;
+                
+                                            tr{
+                                                
+                                                td{
+                                                    @include util.u-fz--2xs;
+                                                    line-height: 1.3;
+                                                    word-break: break-word;
+                                                    padding-bottom: .3vw;
+                
+                                                    &:first-child{
+                                                        width: 35%;
+                                                        padding-right: 1vw;
+                                                    }
+            
+                                                    input,
+                                                    select,
+                                                    textarea{
+                                                        display: flex;
+                                                        width: 100%;
+                                                        padding: 0 .2vw;
+                                                    }
+        
+                                                    textarea{
+                                                        min-height: 2vw;
+                                                    }
+        
+                                                    .editable-checkbox{
+                                                        display: flex;
+                                                        flex-wrap: wrap;
+                                                        padding-bottom: .2vw;
+        
+                                                        label{
+                                                            display: flex;
+                                                            gap: .2vw;
+        
+                                                            input{
+                                                                width: fit-content;
+                                                            }
+                                                        }
+                                                    }
+        
+                                                }
+                                            }
+                                        }
 
+                                        &__bottom{
+                                            padding-top: 2vw;
+                                        
+                                            > p{
+                                                @include util.u-fz--2xs;
+                                                opacity: .6;
+                                            }
                                         }
                                     }
-                                }
-                            }
 
-                            &__bottom{
-
-                                &__number{
-                                
-                                    > p{
-                                        @extend .u-fz--2xs;
-                                        opacity: .6;
-                                    }
                                 }
                             }
                         }

@@ -32,39 +32,6 @@ if (!empty($res['response']['valueLists'])) {
     }
 }
 
-// 他テーブル参照などカスタム値一覧取得を登録する配列
-$customValuelistFetchers = [
-    'クローザー氏名' => function () use ($curlclass, $URL, $DB, $token) {
-        $layout = 'アカウント管理';
-        $names = [];
-
-        // 全件取得クエリ（空条件）
-        $query = json_encode(['query' => []]);
-        $res = $curlclass->find($URL, $DB, $layout, $token, $query);
-
-        if (!empty($res['response']['data'])) {
-            foreach ($res['response']['data'] as $rec) {
-                $fd = $rec['fieldData'] ?? [];
-                if (!empty($fd['tc_氏名'])) {
-                    $names[] = $fd['tc_氏名'];
-                }
-            }
-        }
-
-        $names = array_unique($names);
-        sort($names);
-
-        return $names;
-    },
-    // 他の値一覧があればここに追加可能
-];
-
-// リクエストされたtypesにカスタム処理があれば実行
-foreach ($types as $type) {
-    if (!isset($results[$type]) && isset($customValuelistFetchers[$type])) {
-        $results[$type] = $customValuelistFetchers[$type]();
-    }
-}
 
 echo json_encode([
     'status' => 'success',

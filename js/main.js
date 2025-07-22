@@ -1,17 +1,35 @@
 // タブ切り替え ------------------------------------------------------------------------
 function bindTabEvents() {
     document.querySelectorAll(".p-matter__center__record-list__item").forEach((container) => {
-        const tabItems = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__left__tab__btn li");
-        const tabPanels = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__left__tab__panel > table");
 
-        tabItems.forEach((tabItem) => {
+        // 左側切り替え
+        const tabItems1 = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__left__tab__btn li");
+        const tabPanels1 = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__left__tab__panel > *");
+
+        tabItems1.forEach((tabItem) => {
             tabItem.addEventListener("click", () => {
-                tabItems.forEach((t) => t.classList.remove("is-active"));
-                tabPanels.forEach((p) => p.classList.remove("is-active"));
+                tabItems1.forEach((t) => t.classList.remove("is-active"));
+                tabPanels1.forEach((p) => p.classList.remove("is-active"));
 
                 tabItem.classList.add("is-active");
-                const tabIndex = Array.from(tabItems).indexOf(tabItem);
-                tabPanels[tabIndex].classList.add("is-active");
+                const tabIndex = Array.from(tabItems1).indexOf(tabItem);
+                tabPanels1[tabIndex].classList.add("is-active");
+            });
+        });
+        
+
+        // 右側切り替え
+        const tabItems2 = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__right__tab__btn li");
+        const tabPanels2 = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__right__tab__panel > *");
+
+        tabItems2.forEach((tabItem) => {
+            tabItem.addEventListener("click", () => {
+                tabItems2.forEach((t) => t.classList.remove("is-active"));
+                tabPanels2.forEach((p) => p.classList.remove("is-active"));
+
+                tabItem.classList.add("is-active");
+                const tabIndex = Array.from(tabItems2).indexOf(tabItem);
+                tabPanels2[tabIndex].classList.add("is-active");
             });
         });
     });
@@ -124,7 +142,7 @@ bindTabEvents();
         const recordDiv = wrapper.closest('.p-matter__center__record-list__item');
         const recordId = recordDiv?.dataset?.recordId;
         const fieldName = wrapper.dataset.name;
-        const fieldValue = Array.from(wrapper.querySelectorAll('input:checked')).map(cb => cb.value).join('¶');
+        const fieldValue = Array.from(wrapper.querySelectorAll('input:checked')).map(cb => cb.value).join('\n');
     
         removeErrorMessage(wrapper);
         updateField({ recordId, fieldName, fieldValue, target: wrapper });
@@ -190,3 +208,36 @@ document.querySelectorAll('.fm-script-btn').forEach(button => {
 
 
 
+// 数字コンマ ------------------------------------------------------------------------
+document.querySelectorAll('.number-comma').forEach(input => {
+    const unformat = (val) => val.replace(/,/g, '').replace(/[^\d]/g, '');
+    const format = (val) => {
+        const num = unformat(val);
+        return num ? parseInt(num, 10).toLocaleString() : '';
+    };
+
+    // 初期表示：カンマ付き
+    input.value = format(input.value);
+
+    // フォーカス：編集用にカンマ除去
+    input.addEventListener('focus', () => {
+        input.value = unformat(input.value);
+    });
+
+    // 入力中：リアルタイムでカンマ付きに
+    input.addEventListener('input', (e) => {
+        const cursorPos = input.selectionStart;
+        const rawVal = unformat(input.value);
+        const formattedVal = format(rawVal);
+        input.value = formattedVal;
+
+        // カーソル位置補正（大雑把）
+        const diff = formattedVal.length - rawVal.length;
+        input.setSelectionRange(cursorPos + diff, cursorPos + diff);
+    });
+
+    // フォーカスアウト時：カンマ付き再表示
+    input.addEventListener('blur', () => {
+        input.value = format(input.value);
+    });
+});
