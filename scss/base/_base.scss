@@ -24,10 +24,15 @@ textarea{
 
 select{
     cursor: pointer;
+    min-height: 1vw;
 }
 
 
 input{
+
+    &[type="checkbox"]{
+        cursor: pointer;
+    }
 
     &::-webkit-calendar-picker-indicator{
         cursor: pointer;
@@ -84,6 +89,22 @@ input{
 }
 
 
+
+.is-scroll-contents{
+    overflow: scroll;
+    overflow-y: clip;
+
+    &::-webkit-scrollbar {
+        width: 1vw;
+        height: 1vw;
+        border-radius: 10vw;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10vw;
+        background-color: var(--color-4);
+    }
+}
 
 
 // スクリプト実行時のアラート

@@ -73,99 +73,22 @@
             </td>
         </tr>
         <tr>
-            <td>屋号代表者：</td>
-            <td>
-                <input type="text" class="editable" name="t_屋号代表者" value="<?= htmlspecialchars($record['fieldData']['t_屋号代表者'] ?? '') ?>">
-                <!-- 他テーブル参照が必要 -->
-                <!-- <select class="editable" name="t_屋号代表者" data-valuelist="クローザー氏名">
-                                        <option value="<?= htmlspecialchars($record['fieldData']['t_屋号代表者']) ?>"></option>
-                                    </select> -->
-            </td>
-        </tr>
-        <tr>
-            <td>電話連絡予定日：</td>
-            <td>
-                <input type="date" class="editable" name="d_電話連絡予定日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_電話連絡予定日'] ?? '')) ?>">
-            </td>
-        </tr>
-        <tr>
-            <td>電話連絡時間：</td>
-            <td style="display: flex; width:fit-content; ">
-                <input type="time" class="editable" name="ti_電話連絡時間1" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_電話連絡時間1'] ?? '')) ?>"> ~ <input type="time" class="editable" name="ti_電話連絡時間2" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_電話連絡時間2'] ?? '')) ?>">
-            </td>
-        </tr>
-        <tr>
             <td>クローザー：</td>
             <td>
-                <!-- <select class="editable" name="t_担当クローザー" data-valuelist="クローザー氏名">
-                                        <option value="<?= htmlspecialchars($record['fieldData']['t_担当クローザー']) ?>"></option>
-                                    </select> -->
-                <input type="text" class="editable" name="t_担当クローザー" value="<?= htmlspecialchars($record['fieldData']['t_担当クローザー'] ?? '') ?>">
-            </td>
-        </tr>
-        <tr>
-            <td>クロージング完了日：</td>
-            <td>
-                <input type="date" class="editable" name="d_クロージング完了日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_クロージング完了日'] ?? '')) ?>">
-            </td>
-        </tr>
-        <tr>
-            <td>チェック項目：</td>
-            <td style="display:flex; flex-wrap:wrap; gap:.3vw;">
-                <div class="editable-checkbox"
-                    data-valuelist="再申請チェック"
-                    data-name="t_再申請"
-                    data-selected="<?= htmlspecialchars($record['fieldData']['t_再申請'] ?? '') ?>"
-                    data-original-value="">
-                </div>
-                <div class="editable-checkbox"
-                    data-valuelist="訪販チェック"
-                    data-name="t_訪販"
-                    data-selected="<?= htmlspecialchars($record['fieldData']['t_訪販'] ?? '') ?>"
-                    data-original-value="">
-                </div>
-                <div class="editable-checkbox"
-                    data-valuelist="紹介チェック"
-                    data-name="t_紹介"
-                    data-selected="<?= htmlspecialchars($record['fieldData']['t_紹介'] ?? '') ?>"
-                    data-original-value="">
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>紹介者管理番号</td>
-            <td>
-                <input type="text" class="editable" name="n_紹介者管理番号" value="<?= htmlspecialchars($record['fieldData']['n_紹介者管理番号'] ?? '') ?>">
-            </td>
-        </tr>
-        <tr>
-            <td>進捗確認日：</td>
-            <td>
-                <input type="date" class="editable" name="d_進捗確認日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_進捗確認日'] ?? '')) ?>">
-            </td>
-        </tr>
-        <tr>
-            <td>キャンセル日：</td>
-            <td>
-                <?= htmlspecialchars($record['fieldData']['cd_キャンセル日まとめ'] ?? '') ?>
-            </td>
-        </tr>
-        <tr>
-            <td>訪問予定日：</td>
-            <td>
-                <input type="date" class="editable" name="d_訪問予定日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_訪問予定日'] ?? '')) ?>">
-            </td>
-        </tr>
-        <tr>
-            <td>訪問時間：</td>
-            <td style="display: flex; width:fit-content; ">
-                <input type="time" class="editable" name="ti_訪問時間1" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_訪問時間1'] ?? '')) ?>"> ~ <input type="time" class="editable" name="ti_訪問時間2" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_訪問時間2'] ?? '')) ?>">
-            </td>
-        </tr>
-        <tr>
-            <td>訪問備考：</td>
-            <td>
-                <textarea class="editable" name="t_訪問備考"><?= htmlspecialchars($record['fieldData']['t_訪問備考'] ?? '') ?></textarea>
+                <?php
+                $closer = $curlclass->getrecords($URL, $DB, 'アカウント管理', $token);
+                ?>
+                <select class="editable" name="t_担当クローザー">
+                    <?php
+                    $selectedValue = $record['fieldData']['t_担当クローザー'] ?? '';
+
+                    foreach ($closer['response']['data'] as $recordItem) {
+                        $name = htmlspecialchars($recordItem['fieldData']['tc_氏名']);
+                        $selected = ($name === $selectedValue) ? 'selected' : '';
+                        echo "<option value='{$name}' {$selected}>{$name}</option>";
+                    }
+                    ?>
+                </select>
             </td>
         </tr>
         <tr>
@@ -183,21 +106,41 @@
             </td>
         </tr>
         <tr>
-            <td>管理部チェック：</td>
+            <td>電話連絡予定日：</td>
             <td>
-                <div class="editable-checkbox"
-                    data-valuelist="電話臨時チェック"
-                    data-name="t_管理部イレギュラーチェック"
-                    data-selected="<?= htmlspecialchars($record['fieldData']['t_管理部イレギュラーチェック'] ?? '') ?>"
-                    data-original-value=""
-                    style="font-size: 0;">
-                </div>
+                <input type="date" class="editable" name="d_電話連絡予定日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_電話連絡予定日'] ?? '')) ?>">
             </td>
         </tr>
         <tr>
-            <td>管理部メモ：</td>
+            <td>電話連絡時間：</td>
+            <td style="display: flex; width:fit-content; ">
+                <input type="time" class="editable" name="ti_電話連絡時間1" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_電話連絡時間1'] ?? '')) ?>"> ~ <input type="time" class="editable" name="ti_電話連絡時間2" value="<?= htmlspecialchars(formatTimeJP($record['fieldData']['ti_電話連絡時間2'] ?? '')) ?>">
+            </td>
+        </tr>
+        <tr>
+            <td>進捗確認日：</td>
             <td>
-                <textarea class="editable" name="t_管理部イレギュラーメモ"><?= htmlspecialchars($record['fieldData']['t_管理部イレギュラーメモ'] ?? '') ?></textarea>
+                <input type="date" class="editable" name="d_進捗確認日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_進捗確認日'] ?? '')) ?>">
+            </td>
+        </tr>
+        <tr>
+            <td>進捗確認日（避難用）：</td>
+            <td>
+                <input type="date" class="editable" name="d_進捗確認日_避難用" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_進捗確認日_避難用'] ?? '')) ?>">
+            </td>
+        </tr>
+        <tr>
+            <td>キャンセル日：</td>
+            <td>
+                <input type="date" class="editable" name="cd_キャンセル日まとめ" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['cd_キャンセル日まとめ'] ?? '')) ?>">
+            </td>
+        </tr>
+        <tr>
+            <td>web区分</td>
+            <td>
+                <select class="editable" name="t_web区分" data-valuelist="web区分">
+                    <option value="<?= htmlspecialchars($record['fieldData']['t_web区分']) ?>"></option>
+                </select>
             </td>
         </tr>
     </table>

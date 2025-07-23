@@ -5,7 +5,6 @@ class cURLClass
 	// ----- FileMaker Login ------------------------------------------
 	function login($URL, $DB, $AUTH)
 	{
-
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
 			CURLOPT_URL => $URL . "/fmi/data/vLatest/databases/" . $DB . "/sessions",
@@ -18,7 +17,6 @@ class cURLClass
 			CURLOPT_HTTPHEADER => array(
 				"authorization: basic " . $AUTH,
 				"cache-control: no-cache",
-
 				"content-type: application/json",
 				"content-length: 0"
 			),
@@ -27,10 +25,13 @@ class cURLClass
 		$response = json_decode(curl_exec($curl), true);
 		curl_close($curl);
 
-		$TOKEN    = $response['response']['token'];
-
-		return $TOKEN;
-	} // FileMaker Login Function -------------------------------------
+		if (isset($response['response']['token'])) {
+			return $response['response']['token'];
+		} else {
+			error_log("Login failed: " . print_r($response, true));
+			return null; // または throw new Exception("ログイン失敗");
+		}
+	}
 
 	// ----- FileMaker Logout ----------------------------------------- 
 	function logout($URL, $DB, $TOKEN)
@@ -58,7 +59,7 @@ class cURLClass
 	} // FileMaker Logout Function ------------------------------------
 
 	// ----- FileMaker Get Records -------------------------------------
-	function getrecords($URL, $DB, $LAYOUT, $TOKEN, $limit = 100, $offset = 0)
+	function getrecords($URL, $DB, $LAYOUT, $TOKEN, $limit = 100, $offset = 1)
 	{
 		$LAYOUT = urlencode($LAYOUT);
 		$url = "$URL/fmi/data/vLatest/databases/$DB/layouts/$LAYOUT/records?_limit=$limit&_offset=$offset";
@@ -78,6 +79,30 @@ class cURLClass
 
 		return $response;
 	} // FileMaker Get Record Function --------------------------------
+
+	public function getRelatedRecords($url, $db, $layout, $recordId, $relatedSetName, $token)
+	{
+		$curl = curl_init();
+		curl_setopt_array($curl, [
+			CURLOPT_URL => "{$url}/fmi/data/vLatest/databases/{$db}/layouts/{$layout}/records/{$recordId}/relatedsets/{$relatedSetName}",
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_CUSTOMREQUEST => "GET",
+			CURLOPT_HTTPHEADER => [
+				"Content-Type: application/json",
+				"Authorization: Bearer {$token}",
+			],
+		]);
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+		curl_close($curl);
+
+		if ($err) {
+			return ['error' => $err];
+		}
+
+		return json_decode($response, true);
+	}
 
 	// ----- FileMaker Script ----------------------------------------------
 	function script($URL, $DB, $LAYOUT, $TOKEN, $SCRIPT, $SCRIPTPARAM)

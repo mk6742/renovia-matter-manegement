@@ -69,7 +69,7 @@
         <td>認定額</td>
         <td>
             <input type="text" class="editable number-comma" name="n_認定金額"
-                value="<?= number_format((float)($record['fieldData']['n_認定金額'] ?? '')) ?>"> 円
+                value="<?= number_format((float)($record['fieldData']['n_認定金額'] ?? '')) ?>">&nbsp;円
         </td>
     </tr>
 </table>

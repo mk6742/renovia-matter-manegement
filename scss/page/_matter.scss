@@ -159,28 +159,9 @@
                             border-right: solid 1px rgb(228, 228, 228);
                             padding-right: 1.5vw;
                             width: 100%;
+                            position: relative;
 
                             &__tab{
-
-                                &__btn{
-                                    display: flex;
-                                    flex-wrap: wrap;
-                                    gap: .3vw;
-
-                                    li{
-                                        @include util.u-fz--2xs;
-                                        font-weight: 500;
-                                        padding: .2vw 1vw;
-                                        border: solid 1px var(--color-1);
-                                        border-radius: 100vw;
-                                        width: fit-content;
-                                        cursor: pointer;
-
-                                        &.is-active{
-                                            border-color: var(--color-3);
-                                        }
-                                    }
-                                }
 
                                 &__panel{
                                     padding-top: .5vw;
@@ -205,9 +186,7 @@
                                                 width: fill-available;
                                                 padding: 1vw 0 1vw 0;
                                                 border-bottom: solid 1px rgb(240, 240, 240);
-                                                overflow: scroll;
-                                                overflow-y: clip;
-                                                
+                                    
                                                 &:first-child{
                                                     width: 22%;
                                                     padding-right: 1vw;
@@ -215,7 +194,7 @@
                                                     font-weight: bold;
                                                 }
 
-                                                > table{
+                                                table{
                                                     width: 100%;
                                                     
                                                     tr{
@@ -257,14 +236,20 @@
                                                             &:nth-of-type(2n){
                                                                 background-color: #efefef;
                                                             }
-
+                                                            
                                                             th,
                                                             td{
                                                                 writing-mode: horizontal-tb;
                                                                 padding:.7vw;
-                                                                width: 9vw;
+                                                                width: 10vw;
                                                                 border-bottom: solid 1px #fff !important;
                                                                 vertical-align: middle;
+
+                                                                input,
+                                                                textarea,
+                                                                select{
+                                                                    background-color: #fff;
+                                                                }
                                                             }
 
                                                             th{
@@ -273,7 +258,7 @@
                                                                 left: 0;
                                                                 background-color: #fff;
                                                                 font-weight: normal;
-                                                                background-color: #323232;
+                                                                background-color: var(--color-4);
                                                                 color: #fff;
                                                                 @include util.u-fz--2xs;
                                                             }
@@ -325,26 +310,6 @@
 
                             &__tab{
 
-                                &__btn{
-                                    display: flex;
-                                    flex-wrap: wrap;
-                                    gap: .3vw;
-
-                                    li{
-                                        @include util.u-fz--2xs;
-                                        font-weight: 500;
-                                        padding: .2vw 1vw;
-                                        border: solid 1px var(--color-1);
-                                        border-radius: 100vw;
-                                        width: fit-content;
-                                        cursor: pointer;
-
-                                        &.is-active{
-                                            border-color: var(--color-3);
-                                        }
-                                    }
-                                }
-
                                 &__panel{
                                     padding-top: 1vw;
 
@@ -376,10 +341,14 @@
                                             gap: .5vw;
                                             border: solid 1px var(--color-3);
                                             border-radius: .3vw;
+                                            background-color: var(--color-3);
+                                            color: #fff;
                                             transition: .3s ease;
         
                                             &.is-empty{
                                                 pointer-events: none;
+                                                background-color: #fff;
+                                                color: var(--color-3);
                                             }
         
                                             > p{
@@ -392,8 +361,8 @@
         
                                             @media (hover: hover) {
                                                 &:hover {
-                                                    background-color: var(--color-3);
-                                                    color: #fff;
+                                                    background-color: #fff;
+                                                    color: var(--color-3);
                                                 }
                                             }
                                         }
@@ -449,7 +418,6 @@
                                         }
 
                                         &__bottom{
-                                            padding-top: 2vw;
                                         
                                             > p{
                                                 @include util.u-fz--2xs;
@@ -458,6 +426,40 @@
                                         }
                                     }
 
+                                }
+                            }
+                        }
+
+                        .tab-btn{
+                            display: grid;
+                            grid-template-columns: 1fr;
+                            gap: .5vw;
+
+                            > span{
+                                background-color: var(--color-4);
+                                color: #fff;
+                                padding: .5vw 1vw;
+                                @include util.u-fz--2xs;
+                                border-radius: .2vw;
+                            }
+                            
+                            ul{
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: .3vw;
+
+                                li{
+                                    @include util.u-fz--2xs;
+                                    font-weight: 500;
+                                    padding: .2vw 1vw;
+                                    border: solid 1px var(--color-1);
+                                    border-radius: 100vw;
+                                    width: fit-content;
+                                    cursor: pointer;
+
+                                    &.is-active{
+                                        border-color: var(--color-3);
+                                    }
                                 }
                             }
                         }

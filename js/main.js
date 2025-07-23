@@ -3,7 +3,7 @@ function bindTabEvents() {
     document.querySelectorAll(".p-matter__center__record-list__item").forEach((container) => {
 
         // 左側切り替え
-        const tabItems1 = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__left__tab__btn li");
+        const tabItems1 = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__left__tab__btn ul li");
         const tabPanels1 = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__left__tab__panel > *");
 
         tabItems1.forEach((tabItem) => {
@@ -19,7 +19,7 @@ function bindTabEvents() {
         
 
         // 右側切り替え
-        const tabItems2 = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__right__tab__btn li");
+        const tabItems2 = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__right__tab__btn ul li");
         const tabPanels2 = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__right__tab__panel > *");
 
         tabItems2.forEach((tabItem) => {
@@ -85,17 +85,25 @@ bindTabEvents();
         .then(res => res.json())
         .then(data => {
             loader.remove(); // スピナー削除
-    
+        
             if (data.status === 'success') {
                 target.style.backgroundColor = '#e6ffe6';
                 target.dataset.originalValue = target.value;
             } else {
                 target.style.backgroundColor = '#ffe6e6';
+        
                 const error301 = data.response?.messages?.find(msg => msg.code === '301');
+                const error1708 = data.response?.messages?.find(msg => msg.code === '1708');
+        
                 if (error301) {
                     showErrorMessage(target, 'このレコードは他のユーザーによって編集中です。保存できませんでした。');
+                } else if (error1708) {
+                    showErrorMessage(target, '無効な値が入力されました（1708）');
+                } else {
+                    showErrorMessage(target, `保存失敗: ${data.message || '不明なエラー'}`);
                 }
-                console.log("保存失敗の詳細:", data.message);
+        
+                console.error("保存失敗の詳細:", data.response || data.message);
             }
         })
         .catch(err => {

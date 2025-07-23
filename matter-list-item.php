@@ -9,7 +9,7 @@
 
     <div class="p-matter__center__record-list__item" data-record-id="<?= $record['recordId'] ?>">
         <div class="p-matter__center__record-list__item__main">
-            <!-- 名前・管理番号・ステータス -->
+            <!-- 上　名前・管理番号・ステータス -->
             <div class="p-matter__center__record-list__item__main__heading">
                 <div class="p-matter__center__record-list__item__main__heading__left">
                     <span>
@@ -53,24 +53,32 @@
                 </div>
             </div>
 
+            <!-- 下　メイン -->
             <div class="p-matter__center__record-list__item__main__contents">
 
-                <!-- 左メインのパネル -->
+                <!-- 左　メインのパネル -->
                 <div class="p-matter__center__record-list__item__main__contents__left">
                     <div class="p-matter__center__record-list__item__main__contents__left__tab">
-                        <ul class="p-matter__center__record-list__item__main__contents__left__tab__btn">
-                            <li class="is-active">アポ情報</li>
-                            <li>アトカク情報</li>
-                            <li>アトカクチェック</li>
-                            <li>キャンセル情報</li>
-                            <li>保険申請</li>
-                            <li>書類チェック</li>
-                            <li>クローザー連携情報</li>
-                            <li>請求／入金</li>
-                            <li>工事状況</li>
-                            <li>定期訪問</li>
-                            <li>請負管理</li>
-                        </ul>
+                        <div class="p-matter__center__record-list__item__main__contents__left__tab__btn tab-btn">
+                            <span>詳細情報</span>
+                            <ul>
+                                <li class="is-active">アポ情報</li>
+                                <li>アトカク情報</li>
+                                <li>アトカクチェック</li>
+                                <li>現調情報</li>
+                                <li>訪問履歴</li>
+                                <li>定期訪問</li>
+                                <li>クロージング連携情報</li>
+                                <li>キャンセル情報</li>
+                                <li>保険申請</li>
+                                <li>書類チェック</li>
+                                <li>書類進捗</li>
+                                <li>創蓄情報</li>
+                                <li>請求／入金</li>
+                                <li>工事状況</li>
+                                <li>請負管理</li>
+                            </ul>
+                        </div>
 
                         <div class="p-matter__center__record-list__item__main__contents__left__tab__panel">
                             <!-- アポ情報 -->
@@ -88,6 +96,26 @@
                             include('component/tab-items/atokaku-check.php');
                             ?>
 
+                            <!-- 現調情報 -->
+                            <?php
+                            include('component/tab-items/field-survey.php');
+                            ?>
+
+                            <!-- 訪問履歴 -->
+                            <?php
+                            include('component/tab-items/visit-history.php');
+                            ?>
+
+                            <!-- 定期訪問 -->
+                            <?php
+                            include('component/tab-items/regular-visit.php');
+                            ?>
+
+                            <!-- クロージング連携情報 -->
+                            <?php
+                            include('component/tab-items/closing-alignment.php');
+                            ?>
+
                             <!-- キャンセル情報 -->
                             <?php
                             include('component/tab-items/cancel-info.php');
@@ -103,9 +131,14 @@
                             include('component/tab-items/document-check.php');
                             ?>
 
-                            <!-- クローザー連携情報 -->
+                            <!-- 書類進捗 -->
                             <?php
-                            include('component/tab-items/closer-alignment.php');
+                            include('component/tab-items/document-progress.php');
+                            ?>
+
+                            <!-- 創蓄情報 -->
+                            <?php
+                            include('component/tab-items/solar.php');
                             ?>
 
                             <!-- 請求／入金 -->
@@ -118,11 +151,6 @@
                             include('component/tab-items/construction.php');
                             ?>
 
-                            <!-- 定期訪問 -->
-                            <?php
-                            include('component/tab-items/visit.php');
-                            ?>
-
                             <!-- 請負管理 -->
                             <?php
                             include('component/tab-items/contract.php');
@@ -131,17 +159,20 @@
                     </div>
                 </div>
 
-                <!-- 右基本情報・備考 -->
+                <!-- 右　基本情報・備考 -->
                 <div class="p-matter__center__record-list__item__main__contents__right">
                     <div class="p-matter__center__record-list__item__main__contents__right__tab">
-                        <ul class="p-matter__center__record-list__item__main__contents__right__tab__btn">
-                            <li class="is-active">基本情報</li>
-                            <li>アトカクメモ</li>
-                            <li>クロージング備考</li>
-                            <li>工事備考</li>
-                            <li>管理メモ</li>
-                            <li>工事メモ</li>
-                        </ul>
+                        <div class="p-matter__center__record-list__item__main__contents__right__tab__btn tab-btn">
+                            <span>基本情報・備考</span>
+                            <ul>
+                                <li class="is-active">基本情報</li>
+                                <li>アトカクメモ</li>
+                                <li>クロージング備考</li>
+                                <li>工事備考</li>
+                                <li>管理メモ</li>
+                                <li>工事メモ</li>
+                            </ul>
+                        </div>
 
                         <div class="p-matter__center__record-list__item__main__contents__right__tab__panel">
                             <!-- 基本情報 -->
