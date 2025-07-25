@@ -144,9 +144,4 @@
             </td>
         </tr>
     </table>
-
-    <div class="p-matter__center__record-list__item__main__contents__right__tab__panel__info__bottom">
-        <p>顧客管理番号：<?= htmlspecialchars($record['fieldData']['n_顧客管理番号'] ?? '') ?></p>
-        <p>旧管理番号：<?= htmlspecialchars($record['fieldData']['n_旧管理番号'] ?? '') ?></p>
-    </div>
 </div>

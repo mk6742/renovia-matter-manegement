@@ -36,7 +36,11 @@
                         <div class="p-matter__center__record-list__item__main__heading__right__status__item">
                             <span>ステータス：</span>
                             <p>
-                                <?= htmlspecialchars($record['fieldData']['ct_メインステータス'] ?? '') ?>
+                                <select class="editable" name="ct_メインステータス" data-valuelist="メインステータス">
+                                    <option value="<?= htmlspecialchars($record['fieldData']['ct_メインステータス']) ?>">
+                                        <?= htmlspecialchars($record['fieldData']['ct_メインステータス']) ?>
+                                    </option>
+                                </select>
                             </p>
                         </div>
                         <div class="p-matter__center__record-list__item__main__heading__right__status__item">
@@ -50,6 +54,11 @@
                             </p>
                         </div>
                     </div>
+
+                    <div class="p-matter__center__record-list__item__main__heading__right__number">
+                        <p>顧客管理番号：<?= htmlspecialchars($record['fieldData']['n_顧客管理番号'] ?? '') ?></p>
+                        <p>旧管理番号：<?= htmlspecialchars($record['fieldData']['n_旧管理番号'] ?? '') ?></p>
+                    </div>
                 </div>
             </div>
 
@@ -58,103 +67,45 @@
 
                 <!-- 左　メインのパネル -->
                 <div class="p-matter__center__record-list__item__main__contents__left">
+
+                    <?php
+                    $tabs = [
+                        ['label' => 'アポ情報', 'file' => 'apo.php'],
+                        ['label' => 'アトカク情報', 'file' => 'atokaku-info.php'],
+                        ['label' => 'アトカクチェック', 'file' => 'atokaku-check.php'],
+                        ['label' => '現調情報', 'file' => 'field-survey.php'],
+                        ['label' => '訪問履歴', 'file' => 'visit-history.php'],
+                        ['label' => '定期訪問', 'file' => 'regular-visit.php'],
+                        ['label' => 'クロージング連携情報', 'file' => 'closing-alignment.php'],
+                        ['label' => 'キャンセル情報', 'file' => 'cancel-info.php'],
+                        ['label' => '保険申請', 'file' => 'insurance.php'],
+                        ['label' => '書類チェック', 'file' => 'document-check.php'],
+                        ['label' => '書類進捗', 'file' => 'document-progress.php'],
+                        ['label' => '創蓄情報', 'file' => 'solar.php'],
+                        ['label' => '工事状況', 'file' => 'construction.php'],
+                        ['label' => '施工箇所', 'file' => 'construction-scope.php'],
+                        ['label' => '請負管理', 'file' => 'contract.php'],
+                        ['label' => '請求／入金', 'file' => 'payment.php'],
+                        ['label' => '金額計算', 'file' => 'calc.php'],
+                        ['label' => '相殺管理', 'file' => 'offset.php'],
+                        ['label' => '見積書管理', 'file' => 'quotation.php'],
+                    ];
+                    ?>
+
                     <div class="p-matter__center__record-list__item__main__contents__left__tab">
                         <div class="p-matter__center__record-list__item__main__contents__left__tab__btn tab-btn">
                             <span>詳細情報</span>
                             <ul>
-                                <li class="is-active">アポ情報</li>
-                                <li>アトカク情報</li>
-                                <li>アトカクチェック</li>
-                                <li>現調情報</li>
-                                <li>訪問履歴</li>
-                                <li>定期訪問</li>
-                                <li>クロージング連携情報</li>
-                                <li>キャンセル情報</li>
-                                <li>保険申請</li>
-                                <li>書類チェック</li>
-                                <li>書類進捗</li>
-                                <li>創蓄情報</li>
-                                <li>請求／入金</li>
-                                <li>工事状況</li>
-                                <li>請負管理</li>
+                                <?php foreach ($tabs as $index => $tab): ?>
+                                    <li class="<?= $index === 0 ? 'is-active' : '' ?>"><?= htmlspecialchars($tab['label']) ?></li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
 
                         <div class="p-matter__center__record-list__item__main__contents__left__tab__panel">
-                            <!-- アポ情報 -->
-                            <?php
-                            include('component/tab-items/apo.php');
-                            ?>
-
-                            <!-- アトカク情報 -->
-                            <?php
-                            include('component/tab-items/atokaku-info.php');
-                            ?>
-
-                            <!-- アトカクチェック -->
-                            <?php
-                            include('component/tab-items/atokaku-check.php');
-                            ?>
-
-                            <!-- 現調情報 -->
-                            <?php
-                            include('component/tab-items/field-survey.php');
-                            ?>
-
-                            <!-- 訪問履歴 -->
-                            <?php
-                            include('component/tab-items/visit-history.php');
-                            ?>
-
-                            <!-- 定期訪問 -->
-                            <?php
-                            include('component/tab-items/regular-visit.php');
-                            ?>
-
-                            <!-- クロージング連携情報 -->
-                            <?php
-                            include('component/tab-items/closing-alignment.php');
-                            ?>
-
-                            <!-- キャンセル情報 -->
-                            <?php
-                            include('component/tab-items/cancel-info.php');
-                            ?>
-
-                            <!-- 保険申請 -->
-                            <?php
-                            include('component/tab-items/insurance.php');
-                            ?>
-
-                            <!-- 書類チェック -->
-                            <?php
-                            include('component/tab-items/document-check.php');
-                            ?>
-
-                            <!-- 書類進捗 -->
-                            <?php
-                            include('component/tab-items/document-progress.php');
-                            ?>
-
-                            <!-- 創蓄情報 -->
-                            <?php
-                            include('component/tab-items/solar.php');
-                            ?>
-
-                            <!-- 請求／入金 -->
-                            <?php
-                            include('component/tab-items/payment.php');
-                            ?>
-
-                            <!-- 工事状況 -->
-                            <?php
-                            include('component/tab-items/construction.php');
-                            ?>
-
-                            <!-- 請負管理 -->
-                            <?php
-                            include('component/tab-items/contract.php');
-                            ?>
+                            <?php foreach ($tabs as $tab): ?>
+                                <?php include("component/tab-items/" . $tab['file']); ?>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>

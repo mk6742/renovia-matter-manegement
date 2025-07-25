@@ -25,14 +25,11 @@ textarea{
 select{
     cursor: pointer;
     min-height: 1vw;
+    appearance: auto;
 }
 
 
 input{
-
-    &[type="checkbox"]{
-        cursor: pointer;
-    }
 
     &::-webkit-calendar-picker-indicator{
         cursor: pointer;
@@ -65,6 +62,13 @@ input{
     display: flex;
     flex-wrap: wrap;
     gap: 0 .5vw;
+
+    label{
+        display: flex;
+        align-items: center;
+        gap: .2vw;
+        cursor: pointer;
+    }
 }
 
 
@@ -89,21 +93,29 @@ input{
 }
 
 
-
+// スクロールバー表示
 .is-scroll-contents{
     overflow: scroll;
     overflow-y: clip;
 
     &::-webkit-scrollbar {
-        width: 1vw;
-        height: 1vw;
+        width: .5vw;
+        height: .5vw;
         border-radius: 10vw;
     }
 
     &::-webkit-scrollbar-thumb {
         border-radius: 10vw;
-        background-color: var(--color-4);
+        background-color: rgb(140, 140, 140);
+        cursor: grab;
     }
+}
+
+
+.is-flex-list{
+    display: flex;
+    flex-wrap:wrap;
+    gap:.7vw;
 }
 
 

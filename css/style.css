@@ -30,11 +30,11 @@ textarea {
 select {
   cursor: pointer;
   min-height: 1vw;
+  -webkit-appearance: auto;
+     -moz-appearance: auto;
+          appearance: auto;
 }
 
-input[type=checkbox] {
-  cursor: pointer;
-}
 input::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
@@ -51,6 +51,12 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   flex-wrap: wrap;
   gap: 0 0.5vw;
+}
+.editable-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0.2vw;
+  cursor: pointer;
 }
 
 .loading-spinner {
@@ -80,13 +86,20 @@ input::-webkit-calendar-picker-indicator {
   overflow-y: clip;
 }
 .is-scroll-contents::-webkit-scrollbar {
-  width: 1vw;
-  height: 1vw;
+  width: 0.5vw;
+  height: 0.5vw;
   border-radius: 10vw;
 }
 .is-scroll-contents::-webkit-scrollbar-thumb {
   border-radius: 10vw;
-  background-color: var(--color-4);
+  background-color: rgb(140, 140, 140);
+  cursor: grab;
+}
+
+.is-flex-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7vw;
 }
 
 .custom-alert {
@@ -243,6 +256,10 @@ input::-webkit-calendar-picker-indicator {
 .p-matter__center__record-list__item__main__heading__left__texts__number > p {
   font-size: max(12px, 0.878vw);
 }
+.p-matter__center__record-list__item__main__heading__right {
+  display: flex;
+  gap: 2vw;
+}
 .p-matter__center__record-list__item__main__heading__right__status {
   display: flex;
   gap: 1vw;
@@ -252,17 +269,20 @@ input::-webkit-calendar-picker-indicator {
   font-size: max(12px, 0.878vw);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 .p-matter__center__record-list__item__main__heading__right__status__item > span {
   opacity: 0.5;
   font-size: max(10px, 0.732vw);
 }
+.p-matter__center__record-list__item__main__heading__right__number > p {
+  font-size: max(10px, 0.732vw);
+  opacity: 0.6;
+}
 .p-matter__center__record-list__item__main__contents {
   padding-top: 1.5vw;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 2vw;
+  gap: 1.5vw;
 }
 .p-matter__center__record-list__item__main__contents__left {
   border-right: solid 1px rgb(228, 228, 228);
@@ -500,10 +520,6 @@ input::-webkit-calendar-picker-indicator {
 .p-matter__center__record-list__item__main__contents__right__tab__panel__info table tr td .editable-checkbox label input {
   width: -moz-fit-content;
   width: fit-content;
-}
-.p-matter__center__record-list__item__main__contents__right__tab__panel__info__bottom > p {
-  font-size: max(10px, 0.732vw);
-  opacity: 0.6;
 }
 .p-matter__center__record-list__item__main__contents .tab-btn {
   display: grid;

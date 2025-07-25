@@ -101,6 +101,7 @@
                             }
 
                             &__texts{
+
                                 &__name{
 
                                     > p{
@@ -128,6 +129,8 @@
                         }
 
                         &__right{
+                            display: flex;
+                            gap: 2vw;
 
                             &__status{
                                 display: flex;
@@ -138,12 +141,19 @@
                                     @include util.u-fz--xs;
                                     display: flex;
                                     flex-direction: column;
-                                    justify-content: space-between;
     
                                     > span{
                                         opacity: .5;
                                         @include util.u-fz--2xs
                                     }
+                                }
+                            }
+
+                            &__number{
+
+                                > p{
+                                    @include util.u-fz--2xs;
+                                    opacity: .6;
                                 }
                             }
                         }
@@ -153,7 +163,7 @@
                         padding-top: 1.5vw;
                         display: grid;
                         grid-template-columns: 2fr 1fr;
-                        gap: 2vw;
+                        gap: 1.5vw;
 
                         &__left{
                             border-right: solid 1px rgb(228, 228, 228);
@@ -414,14 +424,6 @@
                                                     }
         
                                                 }
-                                            }
-                                        }
-
-                                        &__bottom{
-                                        
-                                            > p{
-                                                @include util.u-fz--2xs;
-                                                opacity: .6;
                                             }
                                         }
                                     }
