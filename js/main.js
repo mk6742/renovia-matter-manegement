@@ -92,13 +92,16 @@ bindTabEvents();
             } else {
                 target.style.backgroundColor = '#ffe6e6';
         
+                const error102 = data.response?.messages?.find(msg => msg.code === '102');
                 const error301 = data.response?.messages?.find(msg => msg.code === '301');
                 const error1708 = data.response?.messages?.find(msg => msg.code === '1708');
         
-                if (error301) {
+                if (error102) {
+                    showErrorMessage(target, 'フィールドが存在しません。');
+                } else if (error301) {
                     showErrorMessage(target, 'このレコードは他のユーザーによって編集中です。保存できませんでした。');
                 } else if (error1708) {
-                    showErrorMessage(target, '無効な値が入力されました（1708）');
+                    showErrorMessage(target, '無効な値が入力されました。');
                 } else {
                     showErrorMessage(target, `保存失敗: ${data.message || '不明なエラー'}`);
                 }

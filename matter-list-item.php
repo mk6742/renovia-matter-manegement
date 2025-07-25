@@ -74,6 +74,7 @@
                         ['label' => 'アトカク情報', 'file' => 'atokaku-info.php'],
                         ['label' => 'アトカクチェック', 'file' => 'atokaku-check.php'],
                         ['label' => '現調情報', 'file' => 'field-survey.php'],
+                        ['label' => '見積情報', 'file' => 'quotation-info.php'],
                         ['label' => '訪問履歴', 'file' => 'visit-history.php'],
                         ['label' => '定期訪問', 'file' => 'regular-visit.php'],
                         ['label' => 'クロージング連携情報', 'file' => 'closing-alignment.php'],
@@ -89,6 +90,13 @@
                         ['label' => '金額計算', 'file' => 'calc.php'],
                         ['label' => '相殺管理', 'file' => 'offset.php'],
                         ['label' => '見積書管理', 'file' => 'quotation.php'],
+                        ['label' => '請求書管理', 'file' => 'invoice.php'],
+                        ['label' => '保証書管理', 'file' => 'warranty.php'],
+                        ['label' => '領収書管理', 'file' => 'receipt.php'],
+                        ['label' => '営業確認管理', 'file' => 'sales-check.php'],
+                        ['label' => 'アポ獲得情報', 'file' => 'apo-aquisition.php'],
+                        ['label' => '受注情報', 'file' => 'order.php'],
+                        ['label' => 'SF情報', 'file' => 'sf.php'],
                     ];
                     ?>
 

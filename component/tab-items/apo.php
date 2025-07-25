@@ -21,17 +21,21 @@
         </td>
     </tr>
     <tr>
-        <td>Web区分：</td>
-        <td>
-            <select class="editable" name="t_web区分" data-valuelist="web区分">
-                <option value="<?= htmlspecialchars($record['fieldData']['t_web区分']) ?>"></option>
-            </select>
-        </td>
-    </tr>
-    <tr>
         <td>確認者：</td>
         <td>
             <input type="text" class="editable" name="t_確認者" value="<?= htmlspecialchars($record['fieldData']['t_確認者'] ?? '') ?>">
+        </td>
+    </tr>
+    <tr>
+        <td>FC：</td>
+        <td>
+            <div class="editable-checkbox"
+                data-valuelist="FC"
+                data-name="t_FC案件"
+                data-selected="<?= htmlspecialchars($record['fieldData']['t_FC案件'] ?? '') ?>"
+                data-original-value=""
+                style="font-size: 0;">
+            </div>
         </td>
     </tr>
     <tr>

@@ -1,5 +1,21 @@
 <table>
     <tr>
+        <td>保険会社：</td>
+        <td>
+            <select class="editable" name="t_保険会社証書" data-valuelist="保険会社証書">
+                <option value="<?= htmlspecialchars($record['fieldData']['t_保険会社証書']) ?>"></option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>訪問種別：</td>
+        <td>
+            <select class="editable" name="t_コジマ訪問種別" data-valuelist="コジマ訪問種別">
+                <option value="<?= htmlspecialchars($record['fieldData']['t_コジマ訪問種別']) ?>"></option>
+            </select>
+        </td>
+    </tr>
+    <tr>
         <td>予定日：</td>
         <td>
             <input type="date" class="editable" name="d_現地調査予定日" value="<?= htmlspecialchars(formatDateForInput($record['fieldData']['d_現地調査予定日'] ?? '')) ?>">
@@ -18,45 +34,15 @@
         </td>
     </tr>
     <tr>
-        <td>再申請</td>
+        <td>築年数：</td>
         <td>
-            <div class="editable-checkbox"
-                data-valuelist="再申請チェック"
-                data-name="t_再申請"
-                data-selected="<?= htmlspecialchars($record['fieldData']['t_再申請'] ?? '') ?>"
-                data-original-value=""
-                style="font-size: 0;">
-            </div>
+            <input type="text" class="editable" name="t_築年数" value="<?= htmlspecialchars($record['fieldData']['t_築年数'] ?? '') ?>">
         </td>
     </tr>
     <tr>
-        <td>訪販</td>
+        <td>備考：</td>
         <td>
-            <div class="editable-checkbox"
-                data-valuelist="訪販チェック"
-                data-name="t_訪販"
-                data-selected="<?= htmlspecialchars($record['fieldData']['t_訪販'] ?? '') ?>"
-                data-original-value=""
-                style="font-size: 0;">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>紹介</td>
-        <td>
-            <div class="editable-checkbox"
-                data-valuelist="紹介チェック"
-                data-name="t_紹介"
-                data-selected="<?= htmlspecialchars($record['fieldData']['t_紹介'] ?? '') ?>"
-                data-original-value=""
-                style="font-size: 0;">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>紹介者管理番号</td>
-        <td>
-            <input type="text" class="editable" name="n_紹介者管理番号" value="<?= htmlspecialchars($record['fieldData']['n_紹介者管理番号'] ?? '') ?>">
+            <textarea class="editable" name="t_アトカク備考"><?= htmlspecialchars($record['fieldData']['t_アトカク備考'] ?? '') ?></textarea>
         </td>
     </tr>
 </table>
