@@ -290,21 +290,46 @@ input::-webkit-calendar-picker-indicator {
   width: 100%;
   position: relative;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel {
+.p-matter__center__record-list__item__main__contents__left__tab__btn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2vw;
+}
+.p-matter__center__record-list__item__main__contents__left__tab__btn li {
+  font-size: max(10px, 0.732vw);
+  font-weight: 500;
+  padding: 0.7vw 1vw;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+  background-color: rgb(95, 95, 95);
+  color: #fff;
+  border-radius: 0.4vw;
+}
+.p-matter__center__record-list__item__main__contents__left__tab__btn li.is-active {
+  background-color: var(--color-3);
+}
+.p-matter__center__record-list__item__main__contents__left__tab__panels {
   padding-top: 0.5vw;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > * {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item {
   display: none;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > *.is-active {
-  display: table;
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item.is-active {
+  display: inline-block;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel {
+  display: none;
+}
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel.is-active {
+  display: inline-block;
+}
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table {
   table-layout: fixed;
   width: 100%;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td {
   font-size: max(12px, 0.878vw);
   width: -webkit-fill-available;
   width: -moz-available;
@@ -312,78 +337,78 @@ input::-webkit-calendar-picker-indicator {
   padding: 1vw 0 1vw 0;
   border-bottom: solid 1px rgb(240, 240, 240);
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th:first-child,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td:first-child {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th:first-child,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td:first-child {
   width: 22%;
   padding-right: 1vw;
   padding-left: 0;
   font-weight: bold;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table {
   width: 100%;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table tr:first-child th,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table tr:first-child td,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table tr:first-child th,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table tr:first-child td {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table tr:first-child th,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table tr:first-child td,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table tr:first-child th,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table tr:first-child td {
   padding-top: 0;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table tr:last-child th,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table tr:last-child td,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table tr:last-child th,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table tr:last-child td {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table tr:last-child th,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table tr:last-child td,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table tr:last-child th,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table tr:last-child td {
   padding-bottom: 0;
   border-bottom: none;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table tr th,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table tr td,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table tr th,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table tr td {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table tr th,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table tr td,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table tr th,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table tr td {
   padding-left: 0;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table tr th:first-child,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table tr td:first-child,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table tr th:first-child,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table tr td:first-child {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table tr th:first-child,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table tr td:first-child,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table tr th:first-child,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table tr td:first-child {
   font-weight: normal;
   width: 20%;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table.is-portal,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table.is-portal {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table.is-portal,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table.is-portal {
   writing-mode: vertical-lr;
   background-color: var(--color-2);
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table.is-portal tr:nth-of-type(2n),
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table.is-portal tr:nth-of-type(2n) {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table.is-portal tr:nth-of-type(2n),
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table.is-portal tr:nth-of-type(2n) {
   background-color: #efefef;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table.is-portal tr th,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table.is-portal tr td,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table.is-portal tr th,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table.is-portal tr td {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table.is-portal tr th,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table.is-portal tr td,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table.is-portal tr th,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table.is-portal tr td {
   writing-mode: horizontal-tb;
   padding: 0.7vw;
   width: 10vw;
   border-bottom: solid 1px #fff !important;
   vertical-align: middle;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table.is-portal tr th input,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table.is-portal tr th textarea,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table.is-portal tr th select,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table.is-portal tr td input,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table.is-portal tr td textarea,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table.is-portal tr td select,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table.is-portal tr th input,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table.is-portal tr th textarea,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table.is-portal tr th select,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table.is-portal tr td input,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table.is-portal tr td textarea,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table.is-portal tr td select {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table.is-portal tr th input,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table.is-portal tr th textarea,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table.is-portal tr th select,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table.is-portal tr td input,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table.is-portal tr td textarea,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table.is-portal tr td select,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table.is-portal tr th input,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table.is-portal tr th textarea,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table.is-portal tr th select,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table.is-portal tr td input,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table.is-portal tr td textarea,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table.is-portal tr td select {
   background-color: #fff;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th table.is-portal tr th,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td table.is-portal tr th {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th table.is-portal tr th,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td table.is-portal tr th {
   width: 6vw;
   position: sticky;
   left: 0;
@@ -393,32 +418,32 @@ input::-webkit-calendar-picker-indicator {
   color: #fff;
   font-size: max(10px, 0.732vw);
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th input,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th textarea,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th select,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td input,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td textarea,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td select {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th input,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th textarea,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th select,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td input,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td textarea,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td select {
   padding: 0 0.3vw;
   min-width: 30%;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th input[type=checkbox],
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th textarea[type=checkbox],
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th select[type=checkbox],
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td input[type=checkbox],
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td textarea[type=checkbox],
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td select[type=checkbox] {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th input[type=checkbox],
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th textarea[type=checkbox],
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th select[type=checkbox],
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td input[type=checkbox],
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td textarea[type=checkbox],
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td select[type=checkbox] {
   min-width: auto;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th textarea,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td textarea {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th textarea,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td textarea {
   width: -webkit-fill-available;
   width: -moz-available;
   width: fill-available;
   min-height: 4vw;
 }
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th button,
-.p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td button {
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th button,
+.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td button {
   padding: 0.3vw 1vw;
   border-radius: 100vw;
   border: solid 1px var(--color-3);
@@ -426,8 +451,8 @@ input::-webkit-calendar-picker-indicator {
   transition: 0.3s ease;
 }
 @media (hover: hover) {
-  .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr th button:hover,
-  .p-matter__center__record-list__item__main__contents__left__tab__panel > table tr td button:hover {
+  .p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr th button:hover,
+  .p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel > table tr td button:hover {
     background-color: var(--color-3);
     color: #fff;
   }
@@ -522,23 +547,11 @@ input::-webkit-calendar-picker-indicator {
   width: fit-content;
 }
 .p-matter__center__record-list__item__main__contents .tab-btn {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.5vw;
-}
-.p-matter__center__record-list__item__main__contents .tab-btn > span {
-  background-color: var(--color-4);
-  color: #fff;
-  padding: 0.5vw 1vw;
-  font-size: max(10px, 0.732vw);
-  border-radius: 0.2vw;
-}
-.p-matter__center__record-list__item__main__contents .tab-btn ul {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3vw;
 }
-.p-matter__center__record-list__item__main__contents .tab-btn ul li {
+.p-matter__center__record-list__item__main__contents .tab-btn li {
   font-size: max(10px, 0.732vw);
   font-weight: 500;
   padding: 0.2vw 1vw;
@@ -548,7 +561,7 @@ input::-webkit-calendar-picker-indicator {
   width: fit-content;
   cursor: pointer;
 }
-.p-matter__center__record-list__item__main__contents .tab-btn ul li.is-active {
+.p-matter__center__record-list__item__main__contents .tab-btn li.is-active {
   border-color: var(--color-3);
 }
 .p-matter__center .loading {

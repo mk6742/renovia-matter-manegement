@@ -70,68 +70,112 @@
 
                     <?php
                     $tabs = [
-                        ['label' => 'アポ情報', 'file' => 'apo.php'],
-                        ['label' => 'アトカク情報', 'file' => 'atokaku-info.php'],
-                        ['label' => 'アトカクチェック', 'file' => 'atokaku-check.php'],
-                        ['label' => '現調情報', 'file' => 'field-survey.php'],
-                        ['label' => '見積情報', 'file' => 'quotation-info.php'],
-                        ['label' => '訪問履歴', 'file' => 'visit-history.php'],
-                        ['label' => '定期訪問', 'file' => 'regular-visit.php'],
-                        ['label' => 'クロージング連携情報', 'file' => 'closing-alignment.php'],
-                        ['label' => 'キャンセル情報', 'file' => 'cancel-info.php'],
-                        ['label' => '保険申請', 'file' => 'insurance.php'],
-                        ['label' => '書類チェック', 'file' => 'document-check.php'],
-                        ['label' => '書類進捗', 'file' => 'document-progress.php'],
-                        ['label' => '創蓄情報', 'file' => 'solar.php'],
-                        ['label' => '工事状況', 'file' => 'construction.php'],
-                        ['label' => '施工箇所', 'file' => 'construction-scope.php'],
-                        ['label' => '請負管理', 'file' => 'contract.php'],
-                        ['label' => '請求／入金', 'file' => 'payment.php'],
-                        ['label' => '金額計算', 'file' => 'calc.php'],
-                        ['label' => '相殺管理', 'file' => 'offset.php'],
-                        ['label' => '見積書管理', 'file' => 'quotation.php'],
-                        ['label' => '請求書管理', 'file' => 'invoice.php'],
-                        ['label' => '保証書管理', 'file' => 'warranty.php'],
-                        ['label' => '領収書管理', 'file' => 'receipt.php'],
-                        ['label' => '営業確認管理', 'file' => 'sales-check.php'],
-                        ['label' => 'アポ獲得情報', 'file' => 'apo-aquisition.php'],
-                        ['label' => '受注情報', 'file' => 'order.php'],
-                        ['label' => 'SF情報', 'file' => 'sf.php'],
+                        [
+                            'label' => 'アポ',
+                            'subtabs' => [
+                                ['label' => 'アポ詳細', 'file' => 'apo.php'],
+                                ['label' => 'アトカク情報', 'file' => 'atokaku-info.php'],
+                                ['label' => 'アトカクチェック', 'file' => 'atokaku-check.php'],
+                                ['label' => 'アトカクメモ', 'file' => 'atokaku-memo.php'],
+                            ]
+                        ],
+                        [
+                            'label' => '管理',
+                            'subtabs' => [
+                                ['label' => '保険申請', 'file' => 'insurance.php'],
+                                ['label' => '書類チェック', 'file' => 'document-check.php'],
+                                ['label' => 'クロージング連携情報', 'file' => 'closing-alignment.php'],
+                                ['label' => '定期訪問', 'file' => 'regular-visit.php'],
+                                ['label' => '訪問履歴', 'file' => 'visit-history.php'],
+                                ['label' => '書類進捗', 'file' => 'document-progress.php'],
+                                ['label' => '創蓄情報', 'file' => 'solar.php'],
+                                ['label' => '施工箇所', 'file' => 'construction-scope.php'],
+                                ['label' => '管理メモ', 'file' => 'management-memo.php'],
+                            ]
+                        ],
+                        [
+                            'label' => '原価／施工管理',
+                            'subtabs' => [
+                                ['label' => '請負管理', 'file' => 'contract.php'],
+                                ['label' => '工事状況', 'file' => 'construction.php'],
+                                ['label' => '請求／入金', 'file' => 'payment.php'],
+                                ['label' => '金額計算', 'file' => 'calc.php'],
+                                ['label' => '相殺管理', 'file' => 'offset.php'],
+                                ['label' => '工事メモ', 'file' => 'construction-memo.php'],
+                            ]
+                        ],
+                        [
+                            'label' => '見積／請求／保証／領収',
+                            'subtabs' => [
+                                ['label' => '見積書管理', 'file' => 'quotation.php'],
+                                ['label' => '請求書管理', 'file' => 'invoice.php'],
+                                ['label' => '保証書管理', 'file' => 'warranty.php'],
+                                ['label' => '領収書管理', 'file' => 'receipt.php'],
+                                ['label' => '営業確認管理', 'file' => 'sales-check.php'],
+                            ]
+                        ],
+                        [
+                            'label' => 'コジマ',
+                            'subtabs' => [
+                                ['label' => 'アポ獲得情報', 'file' => 'apo-aquisition.php'],
+                                ['label' => '受注情報', 'file' => 'order.php'],
+                                ['label' => 'SF情報', 'file' => 'sf.php'],
+                                ['label' => '現調情報', 'file' => 'field-survey.php'],
+                                ['label' => '見積情報', 'file' => 'quotation-info.php'],
+                                ['label' => 'ASLES入金', 'file' => 'asles-payment.php'],
+                                ['label' => 'コジマ店舗売上', 'file' => 'kojima-sales.php'],
+                                ['label' => 'キャンセル情報', 'file' => 'cancel-info.php'],
+                                ['label' => 'アトカクメモ', 'file' => 'atokaku-memo.php'],
+                            ]
+                        ],
+                        [
+                            'label' => 'FIT申請／補助金',
+                            'subtabs' => [
+                                ['label' => 'FIT申請／系統関連', 'file' => 'fit.php'],
+                            ]
+                        ],
                     ];
                     ?>
 
                     <div class="p-matter__center__record-list__item__main__contents__left__tab">
-                        <div class="p-matter__center__record-list__item__main__contents__left__tab__btn tab-btn">
-                            <span>詳細情報</span>
-                            <ul>
-                                <?php foreach ($tabs as $index => $tab): ?>
-                                    <li class="<?= $index === 0 ? 'is-active' : '' ?>"><?= htmlspecialchars($tab['label']) ?></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
+                        <ul class="p-matter__center__record-list__item__main__contents__left__tab__btn">
+                            <?php foreach ($tabs as $i => $tab): ?>
+                                <li class="<?= $i === 0 ? 'is-active' : '' ?>"><?= htmlspecialchars($tab['label']) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
 
-                        <div class="p-matter__center__record-list__item__main__contents__left__tab__panel">
-                            <?php foreach ($tabs as $tab): ?>
-                                <?php include("component/tab-items/" . $tab['file']); ?>
+                        <div class="p-matter__center__record-list__item__main__contents__left__tab__panels">
+                            <?php foreach ($tabs as $i => $tab): ?>
+                                <div class="p-matter__center__record-list__item__main__contents__left__tab__panels__item <?= $i === 0 ? 'is-active' : '' ?>">
+                                    <ul class="p-matter__center__record-list__item__main__contents__left__tab__panels__item__btn tab-btn">
+                                        <?php foreach ($tab['subtabs'] as $j => $subtab): ?>
+                                            <li class="<?= $j === 0 ? 'is-active' : '' ?>"><?= htmlspecialchars($subtab['label']) ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+
+                                    <?php foreach ($tab['subtabs'] as $j => $subtab): ?>
+                                        <div class="p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel <?= $j === 0 ? 'is-active' : '' ?>">
+                                            <?php include("component/tab-items/" . $subtab['file']); ?>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
                             <?php endforeach; ?>
                         </div>
+
                     </div>
                 </div>
 
                 <!-- 右　基本情報・備考 -->
                 <div class="p-matter__center__record-list__item__main__contents__right">
                     <div class="p-matter__center__record-list__item__main__contents__right__tab">
-                        <div class="p-matter__center__record-list__item__main__contents__right__tab__btn tab-btn">
-                            <span>基本情報・備考</span>
-                            <ul>
-                                <li class="is-active">基本情報</li>
-                                <li>アトカクメモ</li>
-                                <li>クロージング備考</li>
-                                <li>工事備考</li>
-                                <li>管理メモ</li>
-                                <li>工事メモ</li>
-                            </ul>
-                        </div>
+                        <ul class="p-matter__center__record-list__item__main__contents__right__tab__btn tab-btn">
+                            <li class="is-active">基本情報</li>
+                            <li>アトカクメモ</li>
+                            <li>クロージング備考</li>
+                            <li>工事備考</li>
+                            <li>管理メモ</li>
+                            <li>工事メモ</li>
+                        </ul>
 
                         <div class="p-matter__center__record-list__item__main__contents__right__tab__panel">
                             <!-- 基本情報 -->

@@ -173,139 +173,172 @@
 
                             &__tab{
 
-                                &__panel{
+                                &__btn{
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    gap: .2vw;
+
+                                    li{
+                                        @include util.u-fz--2xs;
+                                        font-weight: 500;
+                                        padding: .7vw 1vw;
+                                        width: fit-content;
+                                        cursor: pointer;
+                                        background-color: rgb(95, 95, 95);
+                                        color: #fff;
+                                        border-radius: .4vw;
+
+                                        &.is-active{
+                                            background-color: var(--color-3);
+                                        }
+                                    }
+                                }
+
+                                &__panels{
                                     padding-top: .5vw;
 
-                                    > *{
+                                    &__item{
                                         display: none;
 
                                         &.is-active{
-                                            display: table;
+                                            display: inline-block;
                                         }
-                                    }
 
-                                    > table{
-                                        table-layout: fixed;
-                                        width: 100%;
-    
-                                        tr{
-                                    
-                                            th,
-                                            td{
-                                                @include util.u-fz--xs;
-                                                width: fill-available;
-                                                padding: 1vw 0 1vw 0;
-                                                border-bottom: solid 1px rgb(240, 240, 240);
-                                    
-                                                &:first-child{
-                                                    width: 22%;
-                                                    padding-right: 1vw;
-                                                    padding-left: 0;
-                                                    font-weight: bold;
-                                                }
+                                        &__panel{
+                                            display: none;
 
-                                                table{
-                                                    width: 100%;
-                                                    
-                                                    tr{
+                                            &.is-active{
+                                                display: inline-block;
+                                            }
 
+                                            > table{
+                                                table-layout: fixed;
+                                                width: 100%;
+            
+                                                tr{
+                                            
+                                                    th,
+                                                    td{
+                                                        @include util.u-fz--xs;
+                                                        width: fill-available;
+                                                        padding: 1vw 0 1vw 0;
+                                                        border-bottom: solid 1px rgb(240, 240, 240);
+                                            
                                                         &:first-child{
-
-                                                            th,
-                                                            td{
-                                                                padding-top: 0;
-                                                            }
-                                                        }
-                                                        
-                                                        &:last-child{
-
-                                                            th,
-                                                            td{
-                                                                padding-bottom: 0;
-                                                                border-bottom: none;
-                                                            }
-                                                        }
-
-                                                        th,
-                                                        td{
+                                                            width: 22%;
+                                                            padding-right: 1vw;
                                                             padding-left: 0;
-
-                                                            &:first-child{
-                                                                font-weight: normal;
-                                                                width: 20%;
-                                                            }
+                                                            font-weight: bold;
                                                         }
-                                                    }
 
-                                                    &.is-portal{
-                                                        writing-mode: vertical-lr;
-                                                        background-color: var(--color-2);
-
-                                                        tr{
+                                                        table{
+                                                            width: 100%;
                                                             
-                                                            &:nth-of-type(2n){
-                                                                background-color: #efefef;
-                                                            }
-                                                            
-                                                            th,
-                                                            td{
-                                                                writing-mode: horizontal-tb;
-                                                                padding:.7vw;
-                                                                width: 10vw;
-                                                                border-bottom: solid 1px #fff !important;
-                                                                vertical-align: middle;
+                                                            tr{
 
-                                                                input,
-                                                                textarea,
-                                                                select{
-                                                                    background-color: #fff;
+                                                                &:first-child{
+
+                                                                    th,
+                                                                    td{
+                                                                        padding-top: 0;
+                                                                    }
+                                                                }
+                                                                
+                                                                &:last-child{
+
+                                                                    th,
+                                                                    td{
+                                                                        padding-bottom: 0;
+                                                                        border-bottom: none;
+                                                                    }
+                                                                }
+
+                                                                th,
+                                                                td{
+                                                                    padding-left: 0;
+
+                                                                    &:first-child{
+                                                                        font-weight: normal;
+                                                                        width: 20%;
+                                                                    }
                                                                 }
                                                             }
 
-                                                            th{
-                                                                width: 6vw;
-                                                                position: sticky;
-                                                                left: 0;
-                                                                background-color: #fff;
-                                                                font-weight: normal;
-                                                                background-color: var(--color-4);
-                                                                color: #fff;
-                                                                @include util.u-fz--2xs;
+                                                            &.is-portal{
+                                                                writing-mode: vertical-lr;
+                                                                background-color: var(--color-2);
+
+                                                                tr{
+                                                                    
+                                                                    &:nth-of-type(2n){
+                                                                        background-color: #efefef;
+                                                                    }
+                                                                    
+                                                                    th,
+                                                                    td{
+                                                                        writing-mode: horizontal-tb;
+                                                                        padding:.7vw;
+                                                                        width: 10vw;
+                                                                        border-bottom: solid 1px #fff !important;
+                                                                        vertical-align: middle;
+
+                                                                        input,
+                                                                        textarea,
+                                                                        select{
+                                                                            background-color: #fff;
+                                                                        }
+                                                                    }
+
+                                                                    th{
+                                                                        width: 6vw;
+                                                                        position: sticky;
+                                                                        left: 0;
+                                                                        background-color: #fff;
+                                                                        font-weight: normal;
+                                                                        background-color: var(--color-4);
+                                                                        color: #fff;
+                                                                        @include util.u-fz--2xs;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+                                                        input,
+                                                        textarea,
+                                                        select{
+                                                            padding: 0 .3vw;
+                                                            min-width: 30%;
+
+                                                            &[type="checkbox"]{
+                                                                min-width: auto;
+                                                            }
+                                                        }
+
+                                                        textarea{
+                                                            width: fill-available;
+                                                            min-height: 4vw;
+                                                        }
+
+                                                        button{
+                                                            padding: .3vw 1vw;
+                                                            border-radius: 100vw;
+                                                            border: solid 1px var(--color-3);
+                                                            @include util.u-fz--2xs;
+                                                            transition: .3s ease;
+
+                                                            @media (hover: hover) {
+                                                                &:hover {
+                                                                    background-color: var(--color-3);
+                                                                    color: #fff;
+                                                                }
                                                             }
                                                         }
                                                     }
                                                 }
+                                            }
 
-                                                input,
-                                                textarea,
-                                                select{
-                                                    padding: 0 .3vw;
-                                                    min-width: 30%;
+                                            > textarea{
 
-                                                    &[type="checkbox"]{
-                                                        min-width: auto;
-                                                    }
-                                                }
-
-                                                textarea{
-                                                    width: fill-available;
-                                                    min-height: 4vw;
-                                                }
-
-                                                button{
-                                                    padding: .3vw 1vw;
-                                                    border-radius: 100vw;
-                                                    border: solid 1px var(--color-3);
-                                                    @include util.u-fz--2xs;
-                                                    transition: .3s ease;
-
-                                                    @media (hover: hover) {
-                                                        &:hover {
-                                                            background-color: var(--color-3);
-                                                            color: #fff;
-                                                        }
-                                                    }
-                                                }
                                             }
                                         }
                                     }
@@ -433,35 +466,21 @@
                         }
 
                         .tab-btn{
-                            display: grid;
-                            grid-template-columns: 1fr;
-                            gap: .5vw;
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: .3vw;
 
-                            > span{
-                                background-color: var(--color-4);
-                                color: #fff;
-                                padding: .5vw 1vw;
+                            li{
                                 @include util.u-fz--2xs;
-                                border-radius: .2vw;
-                            }
-                            
-                            ul{
-                                display: flex;
-                                flex-wrap: wrap;
-                                gap: .3vw;
+                                font-weight: 500;
+                                padding: .2vw 1vw;
+                                border: solid 1px var(--color-1);
+                                border-radius: 100vw;
+                                width: fit-content;
+                                cursor: pointer;
 
-                                li{
-                                    @include util.u-fz--2xs;
-                                    font-weight: 500;
-                                    padding: .2vw 1vw;
-                                    border: solid 1px var(--color-1);
-                                    border-radius: 100vw;
-                                    width: fit-content;
-                                    cursor: pointer;
-
-                                    &.is-active{
-                                        border-color: var(--color-3);
-                                    }
+                                &.is-active{
+                                    border-color: var(--color-3);
                                 }
                             }
                         }

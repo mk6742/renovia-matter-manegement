@@ -3,33 +3,43 @@ function bindTabEvents() {
     document.querySelectorAll(".p-matter__center__record-list__item").forEach((container) => {
 
         // 左側切り替え
-        const tabItems1 = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__left__tab__btn ul li");
-        const tabPanels1 = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__left__tab__panel > *");
+        const mainBtns = container.querySelectorAll('.p-matter__center__record-list__item__main__contents__left__tab__btn > li');
+        const mainPanels = container.querySelectorAll('.p-matter__center__record-list__item__main__contents__left__tab__panels__item');
 
-        tabItems1.forEach((tabItem) => {
-            tabItem.addEventListener("click", () => {
-                tabItems1.forEach((t) => t.classList.remove("is-active"));
-                tabPanels1.forEach((p) => p.classList.remove("is-active"));
-
-                tabItem.classList.add("is-active");
-                const tabIndex = Array.from(tabItems1).indexOf(tabItem);
-                tabPanels1[tabIndex].classList.add("is-active");
+        mainBtns.forEach((btn, i) => {
+            btn.addEventListener('click', () => {
+                mainBtns.forEach(b => b.classList.remove('is-active'));
+                mainPanels.forEach(p => p.classList.remove('is-active'));
+                btn.classList.add('is-active');
+                mainPanels[i].classList.add('is-active');
             });
         });
-        
+
+        mainPanels.forEach(panel => {
+            const subBtns = panel.querySelectorAll('.p-matter__center__record-list__item__main__contents__left__tab__panels__item__btn > li');
+            const subPanels = panel.querySelectorAll('.p-matter__center__record-list__item__main__contents__left__tab__panels__item__panel');
+            subBtns.forEach((btn, j) => {
+                btn.addEventListener('click', () => {
+                    subBtns.forEach(b => b.classList.remove('is-active'));
+                    subPanels.forEach(p => p.classList.remove('is-active'));
+                    btn.classList.add('is-active');
+                    subPanels[j].classList.add('is-active');
+                });
+            });
+        });
 
         // 右側切り替え
-        const tabItems2 = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__right__tab__btn ul li");
-        const tabPanels2 = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__right__tab__panel > *");
+        const rightTabItems = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__right__tab__btn li");
+        const rightTabPanels = container.querySelectorAll(".p-matter__center__record-list__item__main__contents__right__tab__panel > *");
 
-        tabItems2.forEach((tabItem) => {
+        rightTabItems.forEach((tabItem) => {
             tabItem.addEventListener("click", () => {
-                tabItems2.forEach((t) => t.classList.remove("is-active"));
-                tabPanels2.forEach((p) => p.classList.remove("is-active"));
+                rightTabItems.forEach((t) => t.classList.remove("is-active"));
+                rightTabPanels.forEach((p) => p.classList.remove("is-active"));
 
                 tabItem.classList.add("is-active");
-                const tabIndex = Array.from(tabItems2).indexOf(tabItem);
-                tabPanels2[tabIndex].classList.add("is-active");
+                const tabIndex = Array.from(rightTabItems).indexOf(tabItem);
+                rightTabPanels[tabIndex].classList.add("is-active");
             });
         });
     });

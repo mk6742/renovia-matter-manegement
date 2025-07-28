@@ -1,5 +1,4 @@
 <table>
-
     <tr>
         <td>支払方法：</td>
         <td>

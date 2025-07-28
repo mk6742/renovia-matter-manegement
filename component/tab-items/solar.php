@@ -15,6 +15,9 @@
                     <td>屋根材</td>
                     <td>
                         <?php
+                        // レコード固有ID（例: DBの内部ID、またはランダムでも可）
+                        $recordId = $record['recordId'] ?? uniqid('roof_');
+
                         // プルダウン用データ取得
                         $roof = $curlclass->getrecords($URL, $DB, '屋根種別プルダウン選択用TB', $token);
 
@@ -38,7 +41,8 @@
                         }
                         ?>
 
-                        <select id="roof-main" class="editable" name="t_太陽光_屋根種別">
+                        <!-- HTML：セレクトボックス -->
+                        <select id="roof-main-<?= $recordId ?>" class="editable" name="t_太陽光_屋根種別">
                             <option value="">選択してください</option>
                             <?php foreach (array_keys($roofOptions) as $main): ?>
                                 <option value="<?= htmlspecialchars($main) ?>" <?= $main === $selectedMain ? 'selected' : '' ?>>
@@ -47,53 +51,55 @@
                             <?php endforeach; ?>
                         </select>
 
-                        <select id="roof-sub" class="editable" name="t_太陽光_屋根種別_小項目">
-                        </select>
+                        <select id="roof-sub-<?= $recordId ?>" class="editable" name="t_太陽光_屋根種別_小項目"></select>
 
+                        <!-- JavaScript -->
                         <script>
-                            const roofOptions = <?= json_encode($roofOptions, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); ?>;
-                            const selectedMain = <?= json_encode($selectedMain) ?>;
-                            const selectedSub = <?= json_encode($selectedSub) ?>;
+                            (function() {
+                                const roofOptions_<?= $recordId ?> = <?= json_encode($roofOptions, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?>;
+                                const selectedMain_<?= $recordId ?> = <?= json_encode($selectedMain) ?>;
+                                const selectedSub_<?= $recordId ?> = <?= json_encode($selectedSub) ?>;
 
-                            const subSelect = document.getElementById('roof-sub');
-                            const mainSelect = document.getElementById('roof-main');
+                                const subSelect = document.getElementById('roof-sub-<?= $recordId ?>');
+                                const mainSelect = document.getElementById('roof-main-<?= $recordId ?>');
 
-                            function populateSubOptions(mainType, selectedValue = '') {
-                                const hideTypes = ['スレート', 'アスファルトシングル'];
+                                function populateSubOptions_<?= $recordId ?>(mainType, selectedValue = '') {
+                                    const hideTypes = ['スレート', 'アスファルトシングル'];
 
-                                if (hideTypes.includes(mainType)) {
-                                    subSelect.style.display = 'none';
-                                    subSelect.innerHTML = '';
-                                    return;
+                                    if (hideTypes.includes(mainType)) {
+                                        subSelect.style.display = 'none';
+                                        subSelect.innerHTML = '';
+                                        return;
+                                    }
+
+                                    subSelect.style.display = '';
+                                    subSelect.innerHTML = '<option value="">選択してください</option>';
+
+                                    const subOptions = roofOptions_<?= $recordId ?>[mainType] || [];
+
+                                    subOptions.forEach(function(subVal) {
+                                        const opt = document.createElement('option');
+                                        opt.value = subVal;
+                                        opt.textContent = subVal;
+                                        if (subVal === selectedValue) opt.selected = true;
+                                        subSelect.appendChild(opt);
+                                    });
                                 }
 
-                                // 再表示＆オプション生成
-                                subSelect.style.display = '';
-                                subSelect.innerHTML = '<option value="">選択してください</option>';
-
-                                const subOptions = roofOptions[mainType] || [];
-
-                                subOptions.forEach(function(subVal) {
-                                    const opt = document.createElement('option');
-                                    opt.value = subVal;
-                                    opt.textContent = subVal;
-                                    if (subVal === selectedValue) opt.selected = true;
-                                    subSelect.appendChild(opt);
+                                // 初期表示
+                                window.addEventListener('DOMContentLoaded', function() {
+                                    if (selectedMain_<?= $recordId ?>) {
+                                        populateSubOptions_<?= $recordId ?>(selectedMain_<?= $recordId ?>, selectedSub_<?= $recordId ?>);
+                                    }
                                 });
-                            }
 
-                            // 初期表示時
-                            window.addEventListener('DOMContentLoaded', function() {
-                                if (selectedMain) {
-                                    populateSubOptions(selectedMain, selectedSub);
-                                }
-                            });
-
-                            // メインセレクト変更時
-                            mainSelect.addEventListener('change', function() {
-                                populateSubOptions(this.value);
-                            });
+                                // メイン変更時
+                                mainSelect.addEventListener('change', function() {
+                                    populateSubOptions_<?= $recordId ?>(this.value);
+                                });
+                            })();
                         </script>
+
 
                     </td>
                 </tr>
