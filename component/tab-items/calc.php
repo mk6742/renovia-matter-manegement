@@ -7,8 +7,7 @@
                 <div class="editable-checkbox"
                     data-valuelist="発注なし"
                     data-name="t_発注なし"
-                    data-selected="<?= htmlspecialchars($record['fieldData']['t_発注なし'] ?? '') ?>"
-                    data-original-value="">
+                    data-selected="<?= htmlspecialchars($record['fieldData']['t_発注なし'] ?? '') ?>">
                 </div>
             </div>
         </td>
@@ -94,8 +93,7 @@
             <div class="editable-checkbox is-flex-list"
                 data-valuelist="足場チェック"
                 data-name="t_足場チェック"
-                data-selected="<?= htmlspecialchars($record['fieldData']['t_足場チェック'] ?? '') ?>"
-                data-original-value="">
+                data-selected="<?= htmlspecialchars($record['fieldData']['t_足場チェック'] ?? '') ?>">
             </div>
         </td>
     </tr>

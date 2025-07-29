@@ -44,7 +44,7 @@
                                         data-valuelist="再申請チェック"
                                         data-name="t_再申請"
                                         data-selected="<?= htmlspecialchars($record['fieldData']['t_再申請'] ?? '') ?>"
-                                        data-original-value=""
+
                                         style="font-size: 0; pointer-events:none;">
                                     </div>
                                 </td>
@@ -53,7 +53,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="8">データなし</td>
+                            <td colspan="20">データなし</td>
                         </tr>
                     <?php endif; ?>
                 </table>

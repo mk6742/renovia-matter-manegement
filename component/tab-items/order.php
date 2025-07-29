@@ -12,7 +12,7 @@
                 data-valuelist="コジマ成約"
                 data-name="t_コジマ成約判定"
                 data-selected="<?= htmlspecialchars($record['fieldData']['t_コジマ成約判定'] ?? '') ?>"
-                data-original-value=""
+
                 style="font-size: 0;">
             </div>
         </td>
@@ -35,8 +35,7 @@
             <div class="editable-checkbox"
                 data-valuelist="コジマ種別"
                 data-name="t_コジマ獲得種別"
-                data-selected="<?= htmlspecialchars($record['fieldData']['t_コジマ獲得種別'] ?? '') ?>"
-                data-original-value="">
+                data-selected="<?= htmlspecialchars($record['fieldData']['t_コジマ獲得種別'] ?? '') ?>">
             </div>
         </td>
     </tr>
@@ -47,7 +46,7 @@
                 data-valuelist="コジマローン"
                 data-name="t_コジマローン判定"
                 data-selected="<?= htmlspecialchars($record['fieldData']['t_コジマローン判定'] ?? '') ?>"
-                data-original-value=""
+
                 style="font-size: 0;">
             </div>
         </td>
@@ -64,8 +63,7 @@
             <div class="editable-checkbox"
                 data-valuelist="コジマ格納チェック"
                 data-name="t_コジマ格納チェック"
-                data-selected="<?= htmlspecialchars($record['fieldData']['t_コジマ格納チェック'] ?? '') ?>"
-                data-original-value="">
+                data-selected="<?= htmlspecialchars($record['fieldData']['t_コジマ格納チェック'] ?? '') ?>">
             </div>
         </td>
     </tr>

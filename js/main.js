@@ -262,3 +262,4 @@ document.querySelectorAll('.number-comma').forEach(input => {
         input.value = format(input.value);
     });
 });
+

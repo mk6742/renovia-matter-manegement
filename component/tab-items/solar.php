@@ -52,55 +52,6 @@
                         </select>
 
                         <select id="roof-sub-<?= $recordId ?>" class="editable" name="t_太陽光_屋根種別_小項目"></select>
-
-                        <!-- JavaScript -->
-                        <script>
-                            (function() {
-                                const roofOptions_<?= $recordId ?> = <?= json_encode($roofOptions, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) ?>;
-                                const selectedMain_<?= $recordId ?> = <?= json_encode($selectedMain) ?>;
-                                const selectedSub_<?= $recordId ?> = <?= json_encode($selectedSub) ?>;
-
-                                const subSelect = document.getElementById('roof-sub-<?= $recordId ?>');
-                                const mainSelect = document.getElementById('roof-main-<?= $recordId ?>');
-
-                                function populateSubOptions_<?= $recordId ?>(mainType, selectedValue = '') {
-                                    const hideTypes = ['スレート', 'アスファルトシングル'];
-
-                                    if (hideTypes.includes(mainType)) {
-                                        subSelect.style.display = 'none';
-                                        subSelect.innerHTML = '';
-                                        return;
-                                    }
-
-                                    subSelect.style.display = '';
-                                    subSelect.innerHTML = '<option value="">選択してください</option>';
-
-                                    const subOptions = roofOptions_<?= $recordId ?>[mainType] || [];
-
-                                    subOptions.forEach(function(subVal) {
-                                        const opt = document.createElement('option');
-                                        opt.value = subVal;
-                                        opt.textContent = subVal;
-                                        if (subVal === selectedValue) opt.selected = true;
-                                        subSelect.appendChild(opt);
-                                    });
-                                }
-
-                                // 初期表示
-                                window.addEventListener('DOMContentLoaded', function() {
-                                    if (selectedMain_<?= $recordId ?>) {
-                                        populateSubOptions_<?= $recordId ?>(selectedMain_<?= $recordId ?>, selectedSub_<?= $recordId ?>);
-                                    }
-                                });
-
-                                // メイン変更時
-                                mainSelect.addEventListener('change', function() {
-                                    populateSubOptions_<?= $recordId ?>(this.value);
-                                });
-                            })();
-                        </script>
-
-
                     </td>
                 </tr>
                 <tr>

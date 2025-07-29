@@ -44,7 +44,7 @@
                 data-valuelist="当日現調"
                 data-name="t_当日現調"
                 data-selected="<?= htmlspecialchars($record['fieldData']['t_当日現調'] ?? '') ?>"
-                data-original-value=""
+
                 style="font-size: 0;">
             </div>
         </td>

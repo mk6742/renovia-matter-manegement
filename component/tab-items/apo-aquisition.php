@@ -44,7 +44,7 @@
                 data-valuelist="コジマトス"
                 data-name="t_コジマトスアップ判定"
                 data-selected="<?= htmlspecialchars($record['fieldData']['t_コジマトスアップ判定'] ?? '') ?>"
-                data-original-value=""
+
                 style="font-size: 0;">
             </div>
         </td>
@@ -56,7 +56,7 @@
                 data-valuelist="コジマ見込"
                 data-name="t_コジマ見込み"
                 data-selected="<?= htmlspecialchars($record['fieldData']['t_コジマ見込み'] ?? '') ?>"
-                data-original-value=""
+
                 style="font-size: 0;">
             </div>
         </td>

@@ -62,7 +62,18 @@ class cURLClass
 	function getrecords($URL, $DB, $LAYOUT, $TOKEN, $limit = 100, $offset = 1)
 	{
 		$LAYOUT = urlencode($LAYOUT);
-		$url = "$URL/fmi/data/vLatest/databases/$DB/layouts/$LAYOUT/records?_limit=$limit&_offset=$offset";
+
+		// ▼ ここでソート条件を定義（例：フィールド名 t_作成日 を降順）
+		$sort = [
+			[
+				'fieldName' => 'n_管理番号',  // ←ここを実際にソートしたいフィールド名に
+				'sortOrder' => 'descend'   // ascend または descend
+			]
+		];
+		$sortParam = '&_sort=' . urlencode(json_encode($sort));
+
+		// ▼ ソートパラメータを含めて URL を構築
+		$url = "$URL/fmi/data/vLatest/databases/$DB/layouts/$LAYOUT/records?_limit=$limit&_offset=$offset$sortParam";
 
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
@@ -79,30 +90,6 @@ class cURLClass
 
 		return $response;
 	} // FileMaker Get Record Function --------------------------------
-
-	public function getRelatedRecords($url, $db, $layout, $recordId, $relatedSetName, $token)
-	{
-		$curl = curl_init();
-		curl_setopt_array($curl, [
-			CURLOPT_URL => "{$url}/fmi/data/vLatest/databases/{$db}/layouts/{$layout}/records/{$recordId}/relatedsets/{$relatedSetName}",
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_CUSTOMREQUEST => "GET",
-			CURLOPT_HTTPHEADER => [
-				"Content-Type: application/json",
-				"Authorization: Bearer {$token}",
-			],
-		]);
-
-		$response = curl_exec($curl);
-		$err = curl_error($curl);
-		curl_close($curl);
-
-		if ($err) {
-			return ['error' => $err];
-		}
-
-		return json_decode($response, true);
-	}
 
 	// ----- FileMaker Script ----------------------------------------------
 	function script($URL, $DB, $LAYOUT, $TOKEN, $SCRIPT, $SCRIPTPARAM)
@@ -242,36 +229,6 @@ class cURLClass
 			CURLOPT_POSTFIELDS => $POSTFIELDS,
 			CURLOPT_HTTPHEADER => array(
 				"authorization: bearer " . $TOKEN,
-				"cache-control: no-cache",
-				"content-type: application/json"
-			),
-		));
-
-		$response = json_decode(curl_exec($curl), true);
-		curl_close($curl);
-
-		return $response;
-	}
-
-	// ----- FileMaker Get Record By Id --------------------------------
-	public function getRecordById($URL, $DB, $LAYOUT, $TOKEN, $recordId)
-	{
-		$LAYOUT = urlencode($LAYOUT);
-		$recordId = urlencode($recordId);
-
-		$url = "{$URL}/fmi/data/vLatest/databases/{$DB}/layouts/{$LAYOUT}/records/{$recordId}";
-
-		$curl = curl_init();
-		curl_setopt_array($curl, array(
-			CURLOPT_URL => $url,
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_ENCODING => "",
-			CURLOPT_MAXREDIRS => 10,
-			CURLOPT_TIMEOUT => 30,
-			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			CURLOPT_CUSTOMREQUEST => "GET",
-			CURLOPT_HTTPHEADER => array(
-				"authorization: bearer {$TOKEN}",
 				"cache-control: no-cache",
 				"content-type: application/json"
 			),

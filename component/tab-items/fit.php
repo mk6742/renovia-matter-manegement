@@ -5,8 +5,7 @@
             <div class="editable-checkbox is-flex-list"
                 data-valuelist="完工報告用1"
                 data-name="FIT管理_t_有無"
-                data-selected="<?= htmlspecialchars($record['fieldData']['FIT管理_t_有無'] ?? '') ?>"
-                data-original-value="">
+                data-selected="<?= htmlspecialchars($record['fieldData']['FIT管理_t_有無'] ?? '') ?>">
             </div>
         </td>
     </tr>
@@ -38,8 +37,7 @@
             <div class="editable-checkbox is-flex-list"
                 data-valuelist="新規値一覧"
                 data-name="FIT管理_t_回収書類"
-                data-selected="<?= htmlspecialchars($record['fieldData']['FIT管理_t_回収書類'] ?? '') ?>"
-                data-original-value="">
+                data-selected="<?= htmlspecialchars($record['fieldData']['FIT管理_t_回収書類'] ?? '') ?>">
             </div>
         </td>
     </tr>

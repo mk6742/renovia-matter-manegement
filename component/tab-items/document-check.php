@@ -5,8 +5,7 @@
             <div class="editable-checkbox"
                 data-valuelist="提出書類チェック"
                 data-name="t_提出書類チェック"
-                data-selected="<?= htmlspecialchars($record['fieldData']['t_提出書類チェック'] ?? '') ?>"
-                data-original-value="">
+                data-selected="<?= htmlspecialchars($record['fieldData']['t_提出書類チェック'] ?? '') ?>">
             </div>
         </td>
     </tr>

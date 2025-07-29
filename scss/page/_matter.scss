@@ -7,13 +7,13 @@
 
     &__left,
     &__right{
-        padding: 2vw;
         position: sticky;
         top: 0;
         height: 100vh;
     }
 
     &__left{
+        padding: 2vw;
 
         > p{
             @include util.u-fz--sm;
@@ -21,22 +21,29 @@
     }
 
     &__right{
+        
+        &__total{
+            padding: 2vw;
+            border-bottom: solid 1px rgb(228, 228, 228);
+
+            > p{
+                @include util.u-fz--xs;
+            }
+        }
 
         form{
             @include util.u-fz--sm;
+            padding: 2vw;
 
             .select-wrap{
                 display: flex;
                 align-items: flex-end;
-                gap: 1vw;
+                gap: .5vw;
                 padding-bottom: .5vw;
-
-                > p{
-                    @include util.u-fz--xs;
-                }
+                @include util.u-fz--xs;
 
                 select{
-                    padding: .2vw 1vw;
+                    padding: .2vw .5vw;
                     background-color: rgb(240, 240, 240);
                     border-radius: .3vw;
                 }
@@ -48,15 +55,66 @@
                 padding: .5vw 1vw;
                 border: solid 1px rgb(177, 177, 177);
                 border-radius: 100vw;
+                @include util.u-fz--sm;
 
                 img{
                     opacity: .5;
                     width: 1.1vw;
                 }
 
-                input{
+                input,
+                select{
+                    width: 100%;
                     background-color: transparent;
                     field-sizing: fixed;
+                }
+            }
+
+            button[type="submit"]{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: .3vw;
+                background-color: var(--color-3);
+                color: #fff;
+                border-radius: 100vw;
+                border: solid 1px var(--color-3);
+                @include util.u-fz--xs;
+                margin-top: .3vw;
+                transition: .3s ease;
+
+                @media (hover: hover) {
+                    &:hover {
+                        background-color: transparent;
+                        color: var(--color-3);
+                    }
+                }
+            }
+        }
+
+        &__nav{
+            display: flex;
+            flex-direction: column;
+
+            a{
+                padding: 2vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-bottom: solid 1px rgb(228, 228, 228);
+                @include util.u-fz--xs;
+                transition: .3s ease;
+
+                &:first-child{
+                    border-top: solid 1px rgb(228, 228, 228);
+                }
+
+                @media (hover: hover) {
+                    &:hover {
+                        background-color: var(--color-3);
+                        color: #fff;
+                    }
                 }
             }
         }
@@ -336,10 +394,6 @@
                                                     }
                                                 }
                                             }
-
-                                            > textarea{
-
-                                            }
                                         }
                                     }
                                 }
@@ -489,10 +543,11 @@
             }
         }
 
-        .loading{
+        &__loading{
             width: 100%;
             padding: 5vw;
             text-align: center;
         }
     }
+
 }

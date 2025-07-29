@@ -33,7 +33,6 @@
                 data-valuelist="FC"
                 data-name="t_FC案件"
                 data-selected="<?= htmlspecialchars($record['fieldData']['t_FC案件'] ?? '') ?>"
-                data-original-value=""
                 style="font-size: 0;">
             </div>
         </td>
@@ -47,7 +46,7 @@
     </tr>
     <td>築年数：</td>
     <td>
-        <input type="number" class="editable" name="t_築年数" value="<?= htmlspecialchars($record['fieldData']['t_築年数'] ?? '') ?>">
+        <input type="text" class="editable" name="t_築年数" value="<?= htmlspecialchars($record['fieldData']['t_築年数'] ?? '') ?>">
     </td>
     </tr>
     <tr>
@@ -65,7 +64,7 @@
                 data-valuelist="付箋案件"
                 data-name="t_付箋案件"
                 data-selected="<?= htmlspecialchars($record['fieldData']['t_付箋案件'] ?? '') ?>"
-                data-original-value=""
+
                 style="font-size: 0;">
             </div>
             <!-- <div style="display:flex; align-items:center; gap:.5vw; padding-top:.3vw;">

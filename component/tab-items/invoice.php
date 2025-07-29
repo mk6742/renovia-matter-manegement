@@ -1,6 +1,6 @@
 <table>
     <tr>
-        <td>見積書一覧：</td>
+        <td>請求書一覧：</td>
         <td>
             <div class="is-scroll-contents">
                 <table class="is-portal">
@@ -43,7 +43,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="8">データなし</td>
+                            <td colspan="20">データなし</td>
                         </tr>
                     <?php endif; ?>
                 </table>

@@ -23,14 +23,12 @@
                 <div class="editable-checkbox"
                     data-valuelist="Paypay"
                     data-name="t_paypay"
-                    data-selected="<?= htmlspecialchars($record['fieldData']['t_paypay'] ?? '') ?>"
-                    data-original-value="">
+                    data-selected="<?= htmlspecialchars($record['fieldData']['t_paypay'] ?? '') ?>">
                 </div>
                 <div class="editable-checkbox"
                     data-valuelist="トラブル案件"
                     data-name="t_トラブル案件"
-                    data-selected="<?= htmlspecialchars($record['fieldData']['t_トラブル案件'] ?? '') ?>"
-                    data-original-value="">
+                    data-selected="<?= htmlspecialchars($record['fieldData']['t_トラブル案件'] ?? '') ?>">
                 </div>
             </div>
 

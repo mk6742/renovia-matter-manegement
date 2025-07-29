@@ -21,7 +21,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_作成不要チェック_現地調査報告書"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_作成不要チェック_現地調査報告書'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -44,7 +44,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_発送無し_現地調査報告書"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_発送無し_現地調査報告書'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -57,7 +57,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_作成不要チェック_見積書"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_作成不要チェック_見積書'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -80,7 +80,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_発送無し_見積書"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_発送無し_見積書'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -93,7 +93,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_作成不要チェック_補助金SML"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_作成不要チェック_補助金SML'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -116,7 +116,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_発送無し_補助金SML"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_発送無し_補助金SML'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -129,7 +129,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_作成不要チェック_ローンSML"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_作成不要チェック_ローンSML'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -152,7 +152,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_発送無し_ローンSML"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_発送無し_ローンSML'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -165,7 +165,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_作成不要チェック_レイアウト"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_作成不要チェック_レイアウト'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -188,7 +188,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_発送無し_レイアウト"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_発送無し_レイアウト'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -201,7 +201,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_作成不要チェック_請求書"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_作成不要チェック_請求書'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -224,7 +224,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_発送無し_請求書"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_発送無し_請求書'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -237,7 +237,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_作成不要チェック_保証書"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_作成不要チェック_保証書'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -260,7 +260,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_発送無し_保証書"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_発送無し_保証書'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -272,8 +272,7 @@
                             <div class="editable-checkbox"
                                 data-valuelist="3点格納"
                                 data-name="t_3点格納"
-                                data-selected="<?= htmlspecialchars($record['fieldData']['t_3点格納'] ?? '') ?>"
-                                data-original-value="">
+                                data-selected="<?= htmlspecialchars($record['fieldData']['t_3点格納'] ?? '') ?>">
                             </div>
                         </td>
                         <td>
@@ -281,7 +280,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_作成不要チェック_完工写真"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_作成不要チェック_完工写真'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -304,7 +303,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_発送無し_完工写真"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_発送無し_完工写真'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -317,7 +316,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_作成不要チェック_領収書"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_作成不要チェック_領収書'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>
@@ -340,7 +339,7 @@
                                 data-valuelist="不要チェック"
                                 data-name="管理_発送無し_領収書"
                                 data-selected="<?= htmlspecialchars($record['fieldData']['管理_発送無し_領収書'] ?? '') ?>"
-                                data-original-value=""
+
                                 style="font-size: 0;">
                             </div>
                         </td>

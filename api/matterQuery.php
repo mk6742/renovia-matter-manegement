@@ -9,7 +9,10 @@ if (!empty($field) && !empty($keyword)) {
     $postFields = json_encode([
         'query' => [[$field => $keyword]],
         'limit' => $limit,
-        'offset' => $offset
+        'offset' => $offset,
+        'sort' => [
+            ['fieldName' => 'n_管理番号', 'sortOrder' => 'descend']
+        ],
     ]);
     $result = $curlclass->find($URL, $DB, $LAYOUT, $TOKEN, $postFields);
 } else {

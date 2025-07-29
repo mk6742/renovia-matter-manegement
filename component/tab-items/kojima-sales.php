@@ -30,7 +30,7 @@
                             data-valuelist="コジマ確定"
                             data-name="t_コジマ前入金確定"
                             data-selected="<?= htmlspecialchars($record['fieldData']['t_コジマ前入金確定'] ?? '') ?>"
-                            data-original-value=""
+
                             style="font-size: 0;">
                         </div>
                     </td>
@@ -69,7 +69,7 @@
                             data-valuelist="コジマ確定"
                             data-name="t_コジマ中入金確定"
                             data-selected="<?= htmlspecialchars($record['fieldData']['t_コジマ中入金確定'] ?? '') ?>"
-                            data-original-value=""
+
                             style="font-size: 0;">
                         </div>
                     </td>
@@ -108,7 +108,7 @@
                             data-valuelist="コジマ確定"
                             data-name="t_コジマ後入金確定"
                             data-selected="<?= htmlspecialchars($record['fieldData']['t_コジマ後入金確定'] ?? '') ?>"
-                            data-original-value=""
+
                             style="font-size: 0;">
                         </div>
                     </td>

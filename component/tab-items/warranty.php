@@ -41,7 +41,7 @@
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="8">データなし</td>
+                            <td colspan="20">データなし</td>
                         </tr>
                     <?php endif; ?>
                 </table>
