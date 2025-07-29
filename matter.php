@@ -199,7 +199,6 @@ include('component/header.php');
 
             <nav class="p-matter__right__nav">
                 <a href="api/logout.php">ログアウト</a>
-
             </nav>
 
         </div>
