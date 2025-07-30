@@ -28,6 +28,21 @@ include('component/header.php');
                 こんにちは！ <br>
                 <?php echo $id; ?>さん
             </p>
+
+            <div class="p-matter__left__list">
+                <?php foreach ($listRecords as $record):
+                    $kanriNo = htmlspecialchars($record['fieldData']['n_管理番号'] ?? '');
+                ?>
+                    <div
+                        class="p-matter__left__list__item"
+                        onclick="window.open('?field=n_管理番号&keyword=<?= urlencode($kanriNo) ?>', '_blank')">
+                        <div class="p-matter__left__list__item__text">
+                            <p><?= $kanriNo ?></p>
+                            <p><?= htmlspecialchars($record['fieldData']['t_契約者名'] ?? '') ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
 
         <div class="p-matter__center">

@@ -13,10 +13,10 @@
     }
 
     &__left{
-        padding: 2vw;
 
         > p{
             @include util.u-fz--sm;
+            padding: 2vw;
         }
     }
 
@@ -233,18 +233,22 @@
 
                                 &__btn{
                                     display: flex;
-                                    flex-wrap: wrap;
-                                    gap: .2vw;
+                                    justify-content: space-evenly;
+                                    border-radius: .4vw;
+                                    overflow: clip;
 
                                     li{
                                         @include util.u-fz--2xs;
                                         font-weight: 500;
+                                        width: fill-available;
                                         padding: .7vw 1vw;
-                                        width: fit-content;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
                                         cursor: pointer;
                                         background-color: rgb(95, 95, 95);
                                         color: #fff;
-                                        border-radius: .4vw;
+                                        line-height: 1.1;
 
                                         &.is-active{
                                             background-color: var(--color-3);
@@ -510,6 +514,36 @@
                                                         }
                                                     }
         
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    &__duplication{
+                                        
+                                        &__item{
+                                            padding: 1vw;
+                                            background-color: var(--color-2);
+                                            display: flex;
+                                            justify-content: space-between;
+                                            cursor: pointer;
+                                            border: solid 1px transparent;
+                                            transition: .3s ease;
+
+                                            &:nth-of-type(2n){
+                                                background-color: #efefef; 
+                                            }
+
+                                            &__text{
+
+                                                > p{
+                                                    @include util.u-fz--xs;
+                                                }
+                                            }
+
+                                            @media (hover: hover) {
+                                                &:hover {
+                                                    border-color: var(--color-4);
                                                 }
                                             }
                                         }

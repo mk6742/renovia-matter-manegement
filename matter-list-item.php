@@ -175,6 +175,7 @@
                             <li>工事備考</li>
                             <li>管理メモ</li>
                             <li>工事メモ</li>
+                            <li>重複</li>
                         </ul>
 
                         <div class="p-matter__center__record-list__item__main__contents__right__tab__panel">
@@ -207,6 +208,11 @@
                             <textarea class="editable" name="t_工事memo">
                                 <?= htmlspecialchars($record['fieldData']['t_工事memo'] ?? '') ?>
                             </textarea>
+
+                            <!-- 重複 -->
+                            <?php
+                            include('component/tab-items/duplication.php');
+                            ?>
                         </div>
                     </div>
                 </div>

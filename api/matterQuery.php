@@ -19,6 +19,12 @@ if (!empty($field) && !empty($keyword)) {
     $result = $curlclass->getrecords($URL, $DB, $LAYOUT, $TOKEN, $limit, $offset);
 }
 
+// 一覧表示用（最大20件）
+$listLimit = 20;
+$listResult = $curlclass->getrecords($URL, $DB, $LAYOUT, $TOKEN, $listLimit, 1);
+$listRecords = $listResult['response']['data'] ?? [];
+
+
 $curlclass->logout($URL, $DB, $TOKEN);
 
 $records = $result['response']['data'] ?? [];
