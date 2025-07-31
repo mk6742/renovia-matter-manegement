@@ -1,4 +1,7 @@
 <div class="p-matter__center__record-list__item__main__contents__right__tab__panel__duplication">
+    <p>
+        重複データ数：<?= htmlspecialchars($record['fieldData']['gcn_重複データ数'] ?? '') ?>
+    </p>
     <?php if (!empty($record['portalData']['案件マスタ_重複表示用'])): ?>
         <?php
         foreach ($record['portalData']['案件マスタ_重複表示用'] as $row):
@@ -14,8 +17,6 @@
             </div>
         <?php endforeach; ?>
     <?php else: ?>
-        <li>
-            <p>重複なし</p>
-        </li>
+        <p>重複なし</p>
     <?php endif; ?>
 </div>

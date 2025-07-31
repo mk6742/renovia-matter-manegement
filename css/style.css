@@ -171,9 +171,51 @@ input::-webkit-calendar-picker-indicator {
   top: 0;
   height: 100vh;
 }
+.p-matter__left {
+  display: flex;
+  flex-direction: column;
+}
 .p-matter__left > p {
   font-size: max(14px, 1.025vw);
   padding: 2vw;
+}
+.p-matter__left__list {
+  border-top: solid 1px rgb(228, 228, 228);
+  border-bottom: solid 1px rgb(228, 228, 228);
+  padding: 2vw;
+}
+.p-matter__left__list__heading {
+  font-size: max(12px, 0.878vw);
+  padding-bottom: 0.5vw;
+}
+.p-matter__left__list__items {
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 50vh;
+  overflow: scroll;
+}
+.p-matter__left__list__items__item {
+  font-size: max(10px, 0.732vw);
+  padding: 1vw;
+  background-color: var(--color-2);
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  border: solid 1px transparent;
+  transition: 0.3s ease;
+}
+.p-matter__left__list__items__item:nth-of-type(2n) {
+  background-color: #efefef;
+}
+.p-matter__left__list__items__item__text > p:nth-of-type(3) {
+  font-family: "Roboto", sans-serif;
+  padding-top: 0.5vw;
+  opacity: 0.5;
+}
+@media (hover: hover) {
+  .p-matter__left__list__items__item:hover {
+    border-color: var(--color-4);
+  }
 }
 .p-matter__right__total {
   padding: 2vw;
@@ -601,6 +643,9 @@ input::-webkit-calendar-picker-indicator {
 .p-matter__center__record-list__item__main__contents__right__tab__panel__info table tr td .editable-checkbox label input {
   width: -moz-fit-content;
   width: fit-content;
+}
+.p-matter__center__record-list__item__main__contents__right__tab__panel__duplication > p {
+  padding-bottom: 0.5vw;
 }
 .p-matter__center__record-list__item__main__contents__right__tab__panel__duplication__item {
   padding: 1vw;

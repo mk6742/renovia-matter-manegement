@@ -13,10 +13,63 @@
     }
 
     &__left{
+        display: flex;
+        flex-direction: column;
 
         > p{
             @include util.u-fz--sm;
             padding: 2vw;
+        }
+
+        &__list{
+            border-top: solid 1px rgb(228, 228, 228);
+            border-bottom: solid 1px rgb(228, 228, 228);
+            padding: 2vw;
+
+            &__heading{
+                @include util.u-fz--xs;
+                padding-bottom: .5vw;
+            }
+
+            &__items{
+                display: grid;
+                grid-template-columns: 1fr;
+                height: 50vh;
+                overflow: scroll;
+
+                &__item{
+                    @include util.u-fz--2xs;
+                    padding: 1vw;
+                    background-color: var(--color-2);
+                    display: flex;
+                    justify-content: space-between;
+                    cursor: pointer;
+                    border: solid 1px transparent;
+                    transition: .3s ease;
+
+                    &:nth-of-type(2n){
+                        background-color: #efefef; 
+                    }
+
+                    &__text{
+
+                        > p{
+
+                            &:nth-of-type(3){
+                                @include util.u-ff--en;
+                                padding-top: .5vw;
+                                opacity: .5;
+                            }
+                        }
+                    }
+
+                    @media (hover: hover) {
+                        &:hover {
+                            border-color: var(--color-4);
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -520,6 +573,10 @@
                                     }
 
                                     &__duplication{
+
+                                        > p{
+                                            padding-bottom: .5vw;
+                                        }
                                         
                                         &__item{
                                             padding: 1vw;

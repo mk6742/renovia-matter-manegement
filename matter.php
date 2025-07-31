@@ -12,7 +12,6 @@ $limit = 5;
 $offset = 1;
 
 include(__DIR__ . '/api/matterQuery.php');
-
 ?>
 
 <?php
@@ -30,19 +29,49 @@ include('component/header.php');
             </p>
 
             <div class="p-matter__left__list">
-                <?php foreach ($listRecords as $record):
-                    $kanriNo = htmlspecialchars($record['fieldData']['n_管理番号'] ?? '');
-                ?>
-                    <div
-                        class="p-matter__left__list__item"
-                        onclick="window.open('?field=n_管理番号&keyword=<?= urlencode($kanriNo) ?>', '_blank')">
-                        <div class="p-matter__left__list__item__text">
-                            <p><?= $kanriNo ?></p>
-                            <p><?= htmlspecialchars($record['fieldData']['t_契約者名'] ?? '') ?></p>
-                        </div>
+                <div class="p-matter__left__list__heading">最新20件：</div>
+                <div id="matter-new-list" class="p-matter__left__list__items">
+                    <div class="p-matter__left__list__items__item">
+                        <div style="opacity: .5;">ロード中</div>
+                        <div class="loading-spinner"></div>
                     </div>
-                <?php endforeach; ?>
+                </div>
             </div>
+            <script>
+                window.addEventListener('DOMContentLoaded', () => {
+                    function formatDate(rawDateStr) {
+                        const [datePart, timePart] = rawDateStr.split(' ');
+                        const [month, day, year] = datePart.split('/');
+                        const [hour, minute] = timePart.split(':');
+
+                        return `${year}/${month.padStart(2, '0')}/${day.padStart(2, '0')} ${hour.padStart(2, '0')}:${minute.padStart(2, '0')}`;
+                    }
+                    fetch('api/newListApi.php')
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.error) {
+                                document.getElementById('matter-new-list').innerHTML = '<p>読み込み失敗</p>';
+                                return;
+                            }
+
+                            const html = data.records.map(rec => `
+                                <div class="p-matter__left__list__items__item" onclick="window.open('?field=n_管理番号&keyword=${encodeURIComponent(rec.kanriNo)}', '_blank')">
+                                    <div class="p-matter__left__list__items__item__text">
+                                        <p>${rec.kanriNo}</p>
+                                        <p>${rec.name}</p>
+                                        <p>作成日：${formatDate(rec.date)}</p>
+                                    </div>
+                                </div>
+                                `).join('');
+
+                            document.getElementById('matter-new-list').innerHTML = html;
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            document.getElementById('matter-new-list').innerHTML = '<p>エラー発生</p>';
+                        });
+                });
+            </script>
         </div>
 
         <div class="p-matter__center">
